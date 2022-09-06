@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/splash/view/splash.dart';
 import 'package:tournament_lotter/app/splash/view_model/splash_provider.dart';
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (create) => SplashProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => RegisterProvider(),
         ),
       ],
       child: MaterialApp(
