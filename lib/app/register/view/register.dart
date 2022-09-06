@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
+import 'widgets/password.dart';
+import 'widgets/textfield.dart';
 
 class RegisterApp extends StatelessWidget {
   const RegisterApp({Key? key}) : super(key: key);
@@ -11,33 +13,103 @@ class RegisterApp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: kPrimary,
-        title: Text('REGISTER APP'),
+        title: const Text('REGISTER APP'),
         centerTitle: true,
       ),
-      body: Form(
-          child: Column(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          TextFormField(
-            cursorColor: Theme.of(context).cursorColor,
-            initialValue: 'Input text',
-            maxLength: 20,
-            decoration: const InputDecoration(
-              icon: Icon(Icons.favorite),
-              labelText: 'Label text',
-              labelStyle: TextStyle(
-                color: Color(0xFF6200EE),
-              ),
-              helperText: 'Helper text',
-              suffixIcon: Icon(
-                Icons.check_circle,
-              ),
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: Color(0xFF6200EE)),
+          Image.asset(
+            'assets/trophy.gif',
+            width: 100,
+            height: 100,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Form(
+              key: context.read<RegisterProvider>().signUpKey,
+              child: Column(
+                children: [
+                  RegisterTextforms(
+                    icon: Icons.maps_home_work_sharp,
+                    text: "Club Name",
+                    obscureText: false,
+                    vertical: 20,
+                    controller: context.read<RegisterProvider>().userName,
+                  ),
+                  RegisterTextforms(
+                    icon: Icons.mobile_screen_share_outlined,
+                    text: "Phone",
+                    obscureText: false,
+                    vertical: 15,
+                    controller: context.read<RegisterProvider>().email,
+                  ),
+                  // RegisterTextforms(
+                  //   icon: Icons.send_to_mobile_rounded,
+                  //   text: "Phone",
+                  //   obscureText: false,
+                  //   vertical: 15,
+                  //   controller: context.read<RegisterProvider>().phoneNumber,
+                  // ),
+                  PasswordTextforms(
+                    icon: Icons.lock_outline,
+                    text: "Password",
+                    obscureText: true,
+                    vertical: 15,
+                    controller: context.read<RegisterProvider>().password,
+                  ),
+                  PasswordTextforms(
+                    icon: Icons.lock_reset_outlined,
+                    text: "Confirm Password",
+                    obscureText: true,
+                    vertical: 15,
+                    controller:
+                        context.read<RegisterProvider>().confirmPassword,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 58.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 150,
+                          vertical: 15,
+                        ),
+                        primary: kPrimary,
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                      ),
+                      onPressed: (() {
+                        context.read<RegisterProvider>().signUp(
+                              context,
+                              context.read<RegisterProvider>().email.text,
+                              context.read<RegisterProvider>().password.text,
+                              context.read<RegisterProvider>().userName.text,
+                              context.read<RegisterProvider>().phoneNumber.text,
+                              context
+                                  .read<RegisterProvider>()
+                                  .confirmPassword
+                                  .text,
+                            );
+                      }),
+                      child: const Text(
+                        "SIGN UP",
+                      ),
+                    ),
+                  ),
+                  // const Padding(
+                  //   padding: EdgeInsets.only(top: 8.0),
+                  //   child: SignUpButtons(primary: Colors.blue, text: "GOOGLE"),
+                  // )
+                ],
               ),
             ),
           ),
         ],
-      )),
+      ),
     );
   }
 }
