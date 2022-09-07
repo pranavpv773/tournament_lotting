@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
+import 'package:tournament_lotter/app/routes/routes.dart';
 import 'widgets/password.dart';
 import 'widgets/textfield.dart';
 
@@ -83,20 +85,10 @@ class RegisterApp extends StatelessWidget {
                         ),
                       ),
                       onPressed: (() {
-                        context.read<RegisterProvider>().signUp(
-                              context,
-                              context.read<RegisterProvider>().email.text,
-                              context.read<RegisterProvider>().password.text,
-                              context.read<RegisterProvider>().userName.text,
-                              context.read<RegisterProvider>().phoneNumber.text,
-                              context
-                                  .read<RegisterProvider>()
-                                  .confirmPassword
-                                  .text,
-                            );
+                        RoutesProvider.removeScreenUntil(screen: HomeScreen());
                       }),
                       child: const Text(
-                        "SIGN UP",
+                        "REGISTER",
                       ),
                     ),
                   ),
