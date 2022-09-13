@@ -1,7 +1,5 @@
 // ignore_for_file: deprecated_member_use
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -36,18 +34,6 @@ class NavDrawer extends StatelessWidget {
                             '',
                             style: TextStyle(color: kWhite),
                           ),
-                          IconButton(
-                            onPressed: () {
-                              // RoutesProvider.nextScreen(
-                              //   screen: const EditUserScreen(),
-                              // );
-                            },
-                            icon: Icon(
-                              Icons.edit,
-                              color: kWhite,
-                              size: 35,
-                            ),
-                          )
                         ],
                       )),
                   ListTile(
