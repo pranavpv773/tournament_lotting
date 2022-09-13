@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
+import 'package:tournament_lotter/app/register/model/register_model.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/utility/view/auth_services.dart';
 import 'package:tournament_lotter/app/utility/view_model/snack_provider.dart';
@@ -15,7 +16,7 @@ class RegisterProvider with ChangeNotifier {
   final confirmPassword = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
-  void signUp(
+  void registerApp(
     BuildContext context,
     String email,
     String password,
@@ -23,6 +24,7 @@ class RegisterProvider with ChangeNotifier {
     String phone,
     String confirmPass,
   ) async {
+    final data = ClubModel(email: email, clubname: name, phone: phone);
     if (signUpKey.currentState!.validate()) {
       if (password != confirmPass) {
         context
@@ -32,7 +34,11 @@ class RegisterProvider with ChangeNotifier {
         try {
           await AuthServices.auth
               .createUserWithEmailAndPassword(email: email, password: password)
-              .then((value) => {podtDetailsToFirebase(context)});
+              .then(
+                (value) => {
+                  podtDetailsToFirebase(context),
+                },
+              );
         } on FirebaseAuthException catch (ex) {
           context
               .read<SnackTProvider>()
@@ -45,18 +51,18 @@ class RegisterProvider with ChangeNotifier {
   void podtDetailsToFirebase(BuildContext context) async {
     // calling our fireStore
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    User? user = AuthServices.auth.currentUser;
+    User? club = AuthServices.auth.currentUser;
 
     //calling our userModel
 
-    context.read<AuthServices>().loggedClubModelH.email = user!.email;
-    context.read<AuthServices>().loggedClubModelH.uid = user.uid;
-    context.read<AuthServices>().loggedClubModelH.clubname = userName.text;
-    context.read<AuthServices>().loggedClubModelH.phone = phoneNumber.text;
+    context.read<AuthServices>().loggedClubModel.email = club!.email;
+    context.read<AuthServices>().loggedClubModel.uid = club.uid;
+    context.read<AuthServices>().loggedClubModel.clubname = userName.text;
+    context.read<AuthServices>().loggedClubModel.phone = phoneNumber.text;
 
     //sending details to fireStore
-    await firebaseFirestore.collection('users').doc(user.uid).set(
-          context.read<AuthServices>().loggedClubModelH.toMap(),
+    await firebaseFirestore.collection('club').doc(club.uid).set(
+          context.read<AuthServices>().loggedClubModel.toMap(),
         );
     disposeControll();
     context.read<SnackTProvider>().successSnack(context);

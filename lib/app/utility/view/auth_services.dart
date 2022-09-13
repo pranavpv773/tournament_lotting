@@ -7,7 +7,7 @@ import 'package:tournament_lotter/app/register/model/register_model.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 
 class AuthServices with ChangeNotifier {
-  ClubModel loggedClubModelH = ClubModel();
+  ClubModel loggedClubModel = ClubModel();
   static FirebaseAuth auth = FirebaseAuth.instance;
   getDataFromCloud(BuildContext context) async {
     User? user = AuthServices.auth.currentUser;
@@ -18,7 +18,7 @@ class AuthServices with ChangeNotifier {
         .get()
         .then((value) {
       ClubModel.fromMap(value.data()!);
-      loggedClubModelH = ClubModel.fromMap(value.data()!);
+      loggedClubModel = ClubModel.fromMap(value.data()!);
       RoutesProvider.removeScreenUntil(screen: HomeScreen());
     });
   }
