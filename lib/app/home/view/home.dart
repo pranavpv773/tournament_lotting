@@ -11,44 +11,45 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // backgroundColor: kWhite,
-        key: _scaffoldKey,
-        endDrawerEnableOpenDragGesture: false,
-        appBar: AppBar(
-          actions: [
-            TextButton(
-              onPressed: () {
-                // RoutesProvider.nextScreen(
-                //   screen: const AddItems(),
-                // );
-              },
-              child: Text(
-                "ADD",
-                style: TextStyle(
-                  color: kWhite,
-                ),
+      // backgroundColor: kWhite,
+      key: _scaffoldKey,
+      endDrawerEnableOpenDragGesture: false,
+      appBar: AppBar(
+        actions: [
+          TextButton(
+            onPressed: () {
+              // RoutesProvider.nextScreen(
+              //   screen: const AddItems(),
+              // );
+            },
+            child: Text(
+              "ADD",
+              style: TextStyle(
+                color: kWhite,
               ),
-            ),
-          ],
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              bottomRight: Radius.circular(0),
-              bottomLeft: Radius.circular(0),
             ),
           ),
-          iconTheme: IconThemeData(color: kWhite),
-          leading: IconButton(
-            icon: CircleAvatar(
-              backgroundColor: kWhite,
-              radius: 110,
-              backgroundImage: const AssetImage(
-                'assets/trophy.gif',
-              ),
-            ),
-            onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+        ],
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(0),
+            bottomLeft: Radius.circular(0),
           ),
         ),
-        drawer: const NavDrawer(),
-        body: Container());
+        iconTheme: IconThemeData(color: kWhite),
+        leading: IconButton(
+          icon: CircleAvatar(
+            backgroundColor: kWhite,
+            radius: 110,
+            backgroundImage: const AssetImage(
+              'assets/trophy.gif',
+            ),
+          ),
+          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
+        ),
+      ),
+      drawer: const NavDrawer(),
+      body: Container(),
+    );
   }
 }

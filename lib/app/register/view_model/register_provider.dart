@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/register/model/register_model.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
-import 'package:tournament_lotter/app/utility/view/auth_services.dart';
+import 'package:tournament_lotter/app/utility/view_model/auth_services.dart';
 import 'package:tournament_lotter/app/utility/view_model/snack_provider.dart';
 
 class RegisterProvider with ChangeNotifier {

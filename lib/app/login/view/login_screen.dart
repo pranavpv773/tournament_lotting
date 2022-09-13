@@ -15,15 +15,15 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: kPrimary,
-        toolbarHeight: MediaQuery.of(context).size.height / 3.5,
+        toolbarHeight: MediaQuery.of(context).size.height / 3,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(0),
-            bottomLeft: Radius.circular(100),
+            bottomRight: Radius.circular(50),
+            bottomLeft: Radius.circular(50),
           ),
         ),
         title: Image.asset(
-          "assets/logo.png",
+          "assets/carroms/tournament_logo.png",
           width: MediaQuery.of(context).size.width / 6,
         ),
         centerTitle: true,
