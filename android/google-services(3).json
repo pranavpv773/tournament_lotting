@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "939694566744",
+    "project_id": "tournament-lotter",
+    "storage_bucket": "tournament-lotter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939694566744:android:4a984c24236e95142f892d",
+        "android_client_info": {
+          "package_name": "com.example.tournament_lotter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939694566744-3j70spl77vetaddhkv5a3gt1m5414iau.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tournament_lotter",
+            "certificate_hash": "6720b976b785c8cd98700f29cb7b8b7c74239cda"
+          }
+        },
+        {
+          "client_id": "939694566744-vi8h7i0v98c12rjnenhkb4lidosrvq0r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAB5dHFogtRfkfPEC2hVAaHvBd_d21Tj3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939694566744-vi8h7i0v98c12rjnenhkb4lidosrvq0r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

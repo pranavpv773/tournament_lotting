@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
         "lib/app/register/view"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
 }
