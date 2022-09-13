@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/splash/view/splash.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (create) => SnackTProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => LoginProvider(),
         ),
       ],
       child: MaterialApp(
