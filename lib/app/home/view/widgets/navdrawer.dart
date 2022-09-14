@@ -1,6 +1,10 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:tournament_lotter/app/add_tournaments/view/add_tournment.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/home/view/home.dart';
+import 'package:tournament_lotter/app/routes/routes.dart';
+import 'package:tournament_lotter/app/tournaments/view/tournaments.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -43,14 +47,20 @@ class NavDrawer extends StatelessWidget {
                     title: const Text(
                       'Home',
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      RoutesProvider.backScreen();
+                    },
                   ),
                   ListTile(
                     leading: const Icon(Icons.sports_score_outlined),
                     title: const Text(
                       'Tournaments',
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      RoutesProvider.backScreen();
+                      RoutesProvider.nextScreen(
+                          screen: const TournamentScreen());
+                    },
                   ),
                   ListTile(
                     leading: const Icon(
@@ -59,7 +69,11 @@ class NavDrawer extends StatelessWidget {
                     title: const Text(
                       'Add Tournaments',
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      RoutesProvider.backScreen();
+                      RoutesProvider.nextScreen(
+                          screen: const AddTournamentScreen());
+                    },
                   ),
                   ListTile(
                     leading: const Icon(

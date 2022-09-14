@@ -15,6 +15,7 @@ class HomeScreen extends StatelessWidget {
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false,
       appBar: AppBar(
+        backgroundColor: kPrimary,
         centerTitle: true,
         title: TextButton(
           onPressed: () {
