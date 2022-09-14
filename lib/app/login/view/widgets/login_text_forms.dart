@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
-import 'login_text.dart';
 
 class LoginTextforms extends StatelessWidget {
   const LoginTextforms({
@@ -21,10 +20,8 @@ class LoginTextforms extends StatelessWidget {
             padding: const EdgeInsets.only(top: 20, right: 40, left: 40),
             child: TextFormField(
               validator: (input) =>
-                  context.read<LoginProvider>().isValidEmail(input!)
-                      ? null
-                      : "Check your email",
-              keyboardType: TextInputType.emailAddress,
+                  context.read<LoginProvider>().isValidEmail(input!),
+              keyboardType: TextInputType.phone,
               controller: context.read<LoginProvider>().email,
               style: TextStyle(
                 color: kGrey,
@@ -41,101 +38,31 @@ class LoginTextforms extends StatelessWidget {
                   ),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
                     color: Colors.grey,
                     width: 2.0,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
                     color: Colors.red,
                     width: 2.0,
                   ),
                 ),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(10),
                   borderSide: const BorderSide(
                     width: 2.0,
                   ),
                 ),
-                hintText: "Email",
+                hintText: "Phone",
                 hintStyle: TextStyle(
                   fontSize: 15,
                   color: kGrey,
                 ),
               ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 20, right: 40, left: 40),
-            child: TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return " Please fill this field";
-                } else if (value.length < 6) {
-                  return " Password is less than six";
-                }
-              },
-              controller: context.read<LoginProvider>().password,
-              style: TextStyle(
-                color: kGrey,
-                fontSize: 18,
-              ),
-              obscuringCharacter: '*',
-              obscureText: true,
-              decoration: InputDecoration(
-                suffixIcon: const Padding(
-                  padding: EdgeInsets.only(right: 16.0),
-                  child: Icon(Icons.remove_red_eye_outlined),
-                ),
-                fillColor: kWhite,
-                filled: true,
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Icon(
-                    Icons.key,
-                    color: kPrimary,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                    color: Colors.grey,
-                    width: 2.0,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                    color: Colors.teal,
-                    width: 2.0,
-                  ),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(30),
-                  borderSide: const BorderSide(
-                    width: 2.0,
-                  ),
-                ),
-                hintText: "password",
-                hintStyle: TextStyle(
-                  fontSize: 15,
-                  color: kGrey,
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 40.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: const [
-                LoginTextButton(
-                  text: 'Forgot Password ?',
-                ),
-              ],
             ),
           ),
           Column(
@@ -146,14 +73,14 @@ class LoginTextforms extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: 150,
+                      horizontal: 120,
                       vertical: 15,
                     ),
                     primary: kPrimary,
                     elevation: 10,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(
-                        30,
+                        5,
                       ),
                     ),
                   ),
@@ -168,33 +95,6 @@ class LoginTextforms extends StatelessWidget {
                   ),
                 ),
               ),
-              // const Padding(
-              //   padding: EdgeInsets.only(top: 18.0),
-              //   child: Center(
-              //     child: Text(
-              //       "OR",
-              //     ),
-              //   ),
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   children: const [
-              //     Padding(
-              //       padding: EdgeInsets.only(top: 13.0),
-              //       child: SocialIcons(
-              //         primary: Colors.blue,
-              //         text: ' GOOGLE',
-              //       ),
-              //     ),
-              //     Padding(
-              //       padding: EdgeInsets.only(top: 13.0),
-              //       child: SocialIcons(
-              //         primary: Colors.black,
-              //         text: ' TWITTER',
-              //       ),
-              //     ),
-              //   ],
-              // ),
             ],
           ),
           const SizedBox(

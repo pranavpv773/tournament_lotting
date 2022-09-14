@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const LoginTextforms(),
           Padding(

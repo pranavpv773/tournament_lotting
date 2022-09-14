@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
@@ -43,7 +44,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         navigatorKey: RoutesProvider.navigatorKey,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.red),
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+          scaffoldBackgroundColor: kWhite,
+        ),
         home: const SplashScreen(),
       ),
     );
