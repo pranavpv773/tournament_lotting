@@ -15,21 +15,20 @@ class HomeScreen extends StatelessWidget {
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false,
       appBar: AppBar(
-        actions: [
-          TextButton(
-            onPressed: () {
-              // RoutesProvider.nextScreen(
-              //   screen: const AddItems(),
-              // );
-            },
-            child: Text(
-              "ADD",
-              style: TextStyle(
-                color: kWhite,
-              ),
+        centerTitle: true,
+        title: TextButton(
+          onPressed: () {
+            // RoutesProvider.nextScreen(
+            //   screen: const AddItems(),
+            // );
+          },
+          child: Text(
+            "ALL TOURNAMENTS",
+            style: TextStyle(
+              color: kWhite,
             ),
           ),
-        ],
+        ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(0),
