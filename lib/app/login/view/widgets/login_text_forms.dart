@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
+import 'package:tournament_lotter/app/routes/routes.dart';
+import 'package:tournament_lotter/app/verification/view/verification.dart';
 
 class LoginTextforms extends StatelessWidget {
   const LoginTextforms({
@@ -85,10 +87,9 @@ class LoginTextforms extends StatelessWidget {
                     ),
                   ),
                   onPressed: (() async {
-                    context.read<LoginProvider>().onTabLoginFunction(
-                        context,
-                        context.read<LoginProvider>().email.text,
-                        context.read<LoginProvider>().password.text);
+                    RoutesProvider.nextScreen(
+                      screen: const OtpVerificationBody(),
+                    );
                   }),
                   child: const Text(
                     "LOGIN",
