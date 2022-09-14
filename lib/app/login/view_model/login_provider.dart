@@ -38,9 +38,9 @@ class LoginProvider with ChangeNotifier {
     await AuthServices.auth.signOut();
   }
 
-  bool isValidEmail(String input) {
-    return RegExp(
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-        .hasMatch(input);
+  isValidEmail(String input) {
+    if (input.length < 10) {
+      return 'Phone number less than 10';
+    }
   }
 }
