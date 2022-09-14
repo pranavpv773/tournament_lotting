@@ -4,6 +4,7 @@ import 'package:tournament_lotter/app/add_tournaments/view/add_tournment.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
+import 'package:tournament_lotter/app/settings/view/settings.dart';
 import 'package:tournament_lotter/app/tournaments/view/tournaments.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -82,7 +83,10 @@ class NavDrawer extends StatelessWidget {
                     title: const Text(
                       'Settings',
                     ),
-                    onTap: () {},
+                    onTap: () {
+                      RoutesProvider.backScreen();
+                      RoutesProvider.nextScreen(screen: const SettingsScreen());
+                    },
                   ),
                   ListTile(
                     leading: const Icon(
