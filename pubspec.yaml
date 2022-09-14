@@ -40,6 +40,9 @@ dependencies:
   cloud_firestore: ^3.4.7
   top_snackbar_flutter: ^2.1.1
   swipeable_page_route: ^0.2.6
+  lottie: ^1.4.2
+  pin_code_text_field: ^1.8.0
+  pin_code_fields: ^7.4.0
 
 
 dev_dependencies:
