@@ -23,7 +23,7 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
         title: Image.asset(
-          "assets/carroms/tournament_logo.png",
+          "assets/trophy.gif",
           width: MediaQuery.of(context).size.width / 6,
         ),
         centerTitle: true,
