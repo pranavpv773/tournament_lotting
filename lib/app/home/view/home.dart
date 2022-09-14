@@ -48,7 +48,28 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       drawer: const NavDrawer(),
-      body: Container(),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/football/empty1.gif',
+            ),
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: const [
+              Text(
+                'Empty Tournaments Fixed',
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
