@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Color kPrimary = Colors.blueAccent;
+Color kPrimary = Colors.red;
 Color kGrey = Colors.grey;
 
 Color kWhite = Colors.white;
