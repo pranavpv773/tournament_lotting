@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class TournamentScreen extends StatelessWidget {
-  const TournamentScreen({Key? key}) : super(key: key);
+class AddTournamentScreen extends StatelessWidget {
+  const AddTournamentScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
