@@ -24,18 +24,21 @@ class TournamentScreen extends StatelessWidget {
                           'https://www.nicepng.com/png/detail/257-2570111_cricket-equipment-gear-cricket-png.png',
                       sports: 'Cricket',
                       count: 5,
+                      avathar: 'avathar1',
                     ),
                     CardWidget(
                       image:
                           'https://m.media-amazon.com/images/I/71ufAwE1xnL._SL1500_.jpg',
                       sports: 'Carroms',
                       count: 5,
+                      avathar: 'avathar2',
                     ),
                     CardWidget(
                       image:
                           'https://img.freepik.com/premium-vector/soccer-football-logo-vector_7888-111.jpg?w=2000',
                       sports: 'Football',
                       count: 5,
+                      avathar: 'avathar3',
                     ),
                   ],
                 ),
@@ -51,11 +54,13 @@ class CardWidget extends StatelessWidget {
     Key? key,
     required this.count,
     required this.image,
+    required this.avathar,
     required this.sports,
   }) : super(key: key);
   final String sports;
   final int count;
   final String image;
+  final String avathar;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -93,7 +98,7 @@ class CardWidget extends StatelessWidget {
                 left: 36,
                 top: 25,
                 child: Hero(
-                  tag: 'avathar',
+                  tag: avathar,
                   child: CircleAvatar(
                     backgroundColor: kWhite,
                     radius: 80,
