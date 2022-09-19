@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tournament_lotter/app/routes/routes.dart';
+import 'package:tournament_lotter/app/teams_view/view/teams_view.dart';
 
 class AddTournamentProvider with ChangeNotifier {
   String? choice;
@@ -11,23 +13,24 @@ class AddTournamentProvider with ChangeNotifier {
   List<String> teams = [];
   List<String> teamsA = [];
   List<String> teamsB = [];
-  createTeams(int limit) async {
-    for (int i = 0; i < limit; i++) {
-      teams.add(controllers[i].text);
-      controllers[i].clear();
+
+  void createTeams(int limit) async {
+    if (addTournamentKey.currentState!.validate()) {
+      for (int i = 0; i < limit; i++) {
+        teams.add(controllers[i].text);
+        controllers[i].clear();
+      }
+      teams.shuffle();
+      double half = teams.length / 2;
+      await createMatches(half.toInt());
     }
-    teams.shuffle();
-    double half = teams.length / 2;
-    createMatches(half.toInt());
   }
 
   createMatches(int limit) async {
     teamsA.addAll(teams.sublist(0, limit));
     teamsB.addAll(teams.sublist(limit));
-    print(teamsA);
-    print(teamsB);
-
-    teams.shuffle();
+    RoutesProvider.removeScreen(
+        screen: TeamsViewScreen(title: choice.toString()));
   }
 
   createController(int limit) {
