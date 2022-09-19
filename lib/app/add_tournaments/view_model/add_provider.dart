@@ -1,22 +1,35 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AddTournamentProvider with ChangeNotifier {
   String? choice;
   String? radioValue;
-  String? selectedCity;
+  int? selectTeams;
+  Color? color;
+  void selectTeam(int value) {
+    selectTeams = value;
+    notifyListeners();
+  }
+
   void radioButtonChanges(String value) {
     radioValue = value;
     switch (value) {
-      case 'one':
-        choice = "He is a programmer !";
+      case 'Cricket':
+        choice = "Cricket";
+        color = Colors.blue;
         break;
-      case 'two':
-        choice = "No, He is not a Programmer !";
+      case 'Carroms':
+        choice = "Carroms";
+        color = Colors.red;
+        break;
+      case 'Football':
+        choice = "Football";
+        color = Colors.greenAccent;
         break;
       default:
         choice = null;
     }
-    debugPrint(choice);
+    print(choice);
     notifyListeners();
   }
 }
