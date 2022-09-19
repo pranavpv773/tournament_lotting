@@ -5,10 +5,10 @@ class TextformWidget extends StatelessWidget {
   const TextformWidget({
     Key? key,
     required this.text,
-    // required this.controller,
+    required this.controller,
   }) : super(key: key);
   final String text;
-  // final TextEditingController controller;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TextformWidget extends StatelessWidget {
             return 'Please fill this field';
           }
         },
-        // controller: controller,
+        controller: controller,
         style: TextStyle(
           color: kGrey,
           fontSize: 18,

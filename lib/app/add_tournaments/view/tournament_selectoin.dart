@@ -1,9 +1,4 @@
-import 'dart:ffi';
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view/add_tournaments.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
@@ -111,6 +106,7 @@ class SelectTournamentScreen extends StatelessWidget {
                               }).toList(),
                               onChanged: (newValue) {
                                 run.selectTeam(int.parse(newValue.toString()));
+                                run.createController(run.selectTeams!);
                               },
                             ),
                           ],
