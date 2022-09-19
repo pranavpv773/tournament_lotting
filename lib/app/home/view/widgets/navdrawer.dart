@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:tournament_lotter/app/add_tournaments/view/tournaments.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/settings/view/settings.dart';
@@ -34,7 +35,7 @@ class NavDrawer extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            '',
+                            '   ',
                             style: TextStyle(color: kWhite),
                           ),
                         ],
@@ -58,7 +59,7 @@ class NavDrawer extends StatelessWidget {
                     onTap: () {
                       RoutesProvider.backScreen();
                       RoutesProvider.nextScreen(
-                          screen: const TournamentScreen());
+                          screen: const AddTournamentScreen());
                     },
                   ),
                   ListTile(
