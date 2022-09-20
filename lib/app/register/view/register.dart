@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
-import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
-import 'package:tournament_lotter/app/routes/routes.dart';
-import 'package:tournament_lotter/app/verification/view/verification.dart';
 import 'widgets/password.dart';
 import 'widgets/textfield.dart';
 
@@ -52,13 +49,7 @@ class RegisterApp extends StatelessWidget {
                       vertical: 15,
                       controller: context.read<RegisterProvider>().phoneNumber,
                     ),
-                    // RegisterTextforms(
-                    //   icon: Icons.send_to_mobile_rounded,
-                    //   text: "email",
-                    //   obscureText: false,
-                    //   vertical: 15,
-                    //   controller: context.read<RegisterProvider>().email,
-                    // ),
+
                     PasswordTextforms(
                       icon: Icons.lock_outline,
                       text: "Password",
@@ -93,17 +84,6 @@ class RegisterApp extends StatelessWidget {
                         onPressed: (() {
                           context.read<RegisterProvider>().registerApp(
                                 context,
-                                context.read<RegisterProvider>().email.text,
-                                context.read<RegisterProvider>().password.text,
-                                context.read<RegisterProvider>().userName.text,
-                                context
-                                    .read<RegisterProvider>()
-                                    .phoneNumber
-                                    .text,
-                                context
-                                    .read<RegisterProvider>()
-                                    .confirmPassword
-                                    .text,
                               );
                         }),
                         child: const Text(

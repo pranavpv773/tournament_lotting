@@ -2,12 +2,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/register/model/register_model.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/utility/view_model/auth_services.dart';
 import 'package:tournament_lotter/app/utility/view_model/snack_provider.dart';
+import 'package:tournament_lotter/app/verification/view/verification.dart';
 
 class RegisterProvider with ChangeNotifier {
   final signUpKey = GlobalKey<FormState>();
@@ -16,57 +18,57 @@ class RegisterProvider with ChangeNotifier {
   final confirmPassword = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
+  final otpController = TextEditingController();
+  String verificationID = "";
+
+  bool otpVisibility = false;
   void registerApp(
     BuildContext context,
-    String email,
-    String password,
-    String name,
-    String phone,
-    String confirmPass,
   ) async {
-    final data = ClubModel(email: email, clubname: name, phone: phone);
+    final data = ClubModel(
+        email: email.text, clubname: userName.text, phone: phoneNumber.text);
     if (signUpKey.currentState!.validate()) {
-      if (password != confirmPass) {
+      if (password != confirmPassword) {
         context
             .read<SnackTProvider>()
             .errorPassword(context, "password not matching");
       } else {
         try {
-          await AuthServices.auth
-              .createUserWithEmailAndPassword(email: email, password: password)
-              .then(
-                (value) => {
-                  podtDetailsToFirebase(context),
-                },
+          RoutesProvider.nextScreen(screen: OtpVerificationBody());
+          await AuthServices.auth.verifyPhoneNumber(
+            phoneNumber: phoneNumber.text,
+            verificationCompleted: (PhoneAuthCredential credential) async {
+              await AuthServices.auth
+                  .signInWithCredential(credential)
+                  .then((value) {});
+            },
+            verificationFailed: (FirebaseAuthException e) {
+              Fluttertoast.showToast(
+                  msg: e.message.toString(),
+                  toastLength: Toast.LENGTH_SHORT,
+                  gravity: ToastGravity.CENTER,
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.red,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+            },
+            codeSent: (String verificationId, int? resendToken) {
+              otpVisibility = true;
+              verificationID = verificationId;
+              notifyListeners();
+            },
+            codeAutoRetrievalTimeout: (String verificationId) {},
+          );
+
+          notifyListeners();
+        } on FirebaseAuthException catch (e) {
+          context.read<SnackTProvider>().errorBox(
+                context,
+                e.message.toString(),
               );
-        } on FirebaseAuthException catch (ex) {
-          context
-              .read<SnackTProvider>()
-              .errorBox(context, ex.message.toString());
         }
       }
     }
-  }
-
-  void podtDetailsToFirebase(BuildContext context) async {
-    // calling our fireStore
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    User? club = AuthServices.auth.currentUser;
-
-    //calling our userModel
-
-    context.read<AuthServices>().loggedClubModel.email = club!.email;
-    context.read<AuthServices>().loggedClubModel.uid = club.uid;
-    context.read<AuthServices>().loggedClubModel.clubname = userName.text;
-    context.read<AuthServices>().loggedClubModel.phone = phoneNumber.text;
-
-    //sending details to fireStore
-    await firebaseFirestore.collection('club').doc(club.uid).set(
-          context.read<AuthServices>().loggedClubModel.toMap(),
-        );
-    disposeControll();
-    context.read<SnackTProvider>().successSnack(context);
-    RoutesProvider.removeScreenUntil(screen: HomeScreen());
   }
 
   disposeControll() {

@@ -24,7 +24,7 @@ class LoginTextforms extends StatelessWidget {
               validator: (input) =>
                   context.read<LoginProvider>().isValidEmail(input!),
               keyboardType: TextInputType.phone,
-              controller: context.read<LoginProvider>().email,
+              controller: context.read<LoginProvider>().phoneNumber,
               style: TextStyle(
                 color: kGrey,
                 fontSize: 18,
@@ -87,9 +87,7 @@ class LoginTextforms extends StatelessWidget {
                     ),
                   ),
                   onPressed: (() async {
-                    RoutesProvider.nextScreen(
-                      screen: const OtpVerificationBody(),
-                    );
+                    context.read<LoginProvider>().onTabLoginFunction(context);
                   }),
                   child: const Text(
                     "LOGIN",

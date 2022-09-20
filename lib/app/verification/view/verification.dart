@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tournament_lotter/app/home/view/home.dart';
-import 'package:tournament_lotter/app/routes/routes.dart';
+import 'package:provider/provider.dart';
+import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'widgets/button.dart';
 import 'widgets/card_widget.dart';
 import 'widgets/lottie_img.dart';
@@ -38,9 +38,7 @@ class OtpVerificationBody extends StatelessWidget {
                 size: size,
                 text: "Continue",
                 press: () {
-                  RoutesProvider.removeScreenUntil(
-                    screen: HomeScreen(),
-                  );
+                  context.read<LoginProvider>().verifyOTP();
                 },
               ),
             ],

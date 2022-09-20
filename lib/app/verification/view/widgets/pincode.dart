@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 
 class PinCodeFieldWidget extends StatelessWidget {
   const PinCodeFieldWidget({
@@ -48,7 +50,7 @@ class PinCodeFieldWidget extends StatelessWidget {
               animationDuration: const Duration(milliseconds: 300),
               enableActiveFill: true,
               // errorAnimationController: errorController,
-              // controller: textEditingController,
+              controller: context.read<LoginProvider>().otpController,
               keyboardType: TextInputType.number,
 
               boxShadows: const [
