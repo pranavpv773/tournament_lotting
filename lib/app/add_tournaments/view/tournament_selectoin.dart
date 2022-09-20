@@ -98,6 +98,8 @@ class SelectTournamentScreen extends StatelessWidget {
                                 22,
                                 24,
                                 26,
+                                28,
+                                30,
                               ].map((int value) {
                                 return DropdownMenuItem<int>(
                                   value: value,
