@@ -47,7 +47,9 @@ class AddTournamentScreen extends StatelessWidget {
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.amber)),
                 onPressed: () {
-                  context.read<AddTournamentProvider>().createTeams(length);
+                  context
+                      .read<AddTournamentProvider>()
+                      .createTeams(length, context);
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),

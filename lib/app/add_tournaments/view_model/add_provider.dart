@@ -1,40 +1,61 @@
 import 'package:flutter/material.dart';
-import 'package:tournament_lotter/app/routes/routes.dart';
-import 'package:tournament_lotter/app/teams_view/view/teams_view.dart';
+import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 class AddTournamentProvider with ChangeNotifier {
   String? choice;
   String? radioValue;
   int? selectTeams;
   Color? color;
+  String? singleSelectedIndexText;
 
+  int? selectIndex;
   List<TextEditingController> controllers = [];
   final addTournamentKey = GlobalKey<FormState>();
   List<String> teams = [];
   List<String> teamsA = [];
   List<String> teamsB = [];
+  List groupList = [];
 
-  void createTeams(int limit) async {
+  createGroup(int limit) {
+    print(limit);
+    for (int i = 4; i < limit; i++) {
+      if (limit % i == 0) {
+        groupList.add(i);
+      }
+    }
+    print('group:$groupList');
+  }
+
+  void createTeams(int limit, BuildContext context) async {
     if (addTournamentKey.currentState!.validate()) {
       for (int i = 0; i < limit; i++) {
         teams.add(controllers[i].text);
         controllers[i].clear();
       }
-      teams.shuffle();
-      double half = teams.length / 2;
-      await createMatches(half.toInt());
+
+      await createMatches(context);
+    } else {
+      teams.clear();
+      teamsA.clear();
+      teamsB.clear();
+      print(teams);
     }
   }
 
-  createMatches(int limit) async {
-    teamsA.addAll(teams.sublist(0, limit));
-    teamsB.addAll(teams.sublist(limit));
-    RoutesProvider.removeScreen(
-        screen: TeamsViewScreen(title: choice.toString()));
+  createMatches(BuildContext context) async {
+    teams.shuffle();
+    double limit = teams.length / 2;
+    teamsA.addAll(teams.sublist(0, limit.toInt()));
+    print(teamsA);
+    teamsB.addAll(teams.sublist(limit.toInt()));
+    print(teamsB);
+    dialogBox(context);
   }
 
   createController(int limit) {
     controllers = List.generate(limit, (i) => TextEditingController());
+    groupList.clear();
+    createGroup(limit);
   }
 
   void selectTeam(int value) {
@@ -62,5 +83,34 @@ class AddTournamentProvider with ChangeNotifier {
     }
     print(choice);
     notifyListeners();
+  }
+
+  Future<Object?> dialogBox(BuildContext context) {
+    print(teams);
+    return showAnimatedDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext context) {
+        return ClassicListDialogWidget(
+          titleText: 'Title',
+          listType: ListType.singleSelect,
+          activeColor: Colors.red,
+          selectedIndex: selectIndex,
+          dataList: List.generate(
+            groupList.length,
+            (index) {
+              return groupList[index];
+            },
+          ),
+        );
+      },
+      animationType: DialogTransitionType.size,
+      curve: Curves.linear,
+    );
+    // selectIndex = index ?? selectIndex;
+
+    print('selectedIndex:$selectIndex');
+    notifyListeners();
+    this.singleSelectedIndexText = '${selectIndex ?? ''}';
   }
 }
