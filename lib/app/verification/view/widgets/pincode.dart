@@ -34,7 +34,7 @@ class PinCodeFieldWidget extends StatelessWidget {
               animationType: AnimationType.fade,
               validator: (v) {
                 if (v!.length < 3) {
-                  return "I'm from validator";
+                  return "please fill all fields";
                 } else {
                   return null;
                 }

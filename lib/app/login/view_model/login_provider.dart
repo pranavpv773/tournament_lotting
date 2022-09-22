@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/utility/view_model/auth_services.dart';
@@ -13,11 +14,12 @@ class LoginProvider with ChangeNotifier {
   final formKey = GlobalKey<FormState>();
   final otpController = TextEditingController();
   bool otpVisibility = false;
+
   String verificationID = "";
   onTabLoginFunction(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       try {
-        await RoutesProvider.nextScreen(screen: OtpVerificationBody());
+        await RoutesProvider.nextScreen(screen: const OtpVerificationBody());
         await AuthServices.auth.verifyPhoneNumber(
           phoneNumber: phoneNumber.text,
           verificationCompleted: (PhoneAuthCredential credential) async {
@@ -66,10 +68,12 @@ class LoginProvider with ChangeNotifier {
   }
 
   void verifyOTP() async {
+    final shared = await SharedPreferences.getInstance();
     PhoneAuthCredential credential = PhoneAuthProvider.credential(
         verificationId: verificationID, smsCode: otpController.text);
 
     await AuthServices.auth.signInWithCredential(credential).then((value) {
+      shared.setBool('login', true);
       RoutesProvider.removeScreenUntil(screen: HomeScreen());
       Fluttertoast.showToast(
           msg: "You are logged in successfully",

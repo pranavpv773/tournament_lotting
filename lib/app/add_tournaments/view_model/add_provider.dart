@@ -17,9 +17,10 @@ class AddTournamentProvider with ChangeNotifier {
   List groupList = [];
 
   createGroup(int limit) {
-    print(limit);
-    for (int i = 4; i < limit; i++) {
+    // print(limit);
+    for (int i = 2; i < limit; i++) {
       if (limit % i == 0) {
+        print(i);
         groupList.add(i);
       }
     }
@@ -38,7 +39,7 @@ class AddTournamentProvider with ChangeNotifier {
       teams.clear();
       teamsA.clear();
       teamsB.clear();
-      print(teams);
+      // print(teams);
     }
   }
 
@@ -46,9 +47,9 @@ class AddTournamentProvider with ChangeNotifier {
     teams.shuffle();
     double limit = teams.length / 2;
     teamsA.addAll(teams.sublist(0, limit.toInt()));
-    print(teamsA);
+    // print(teamsA);
     teamsB.addAll(teams.sublist(limit.toInt()));
-    print(teamsB);
+    // print(teamsB);
     dialogBox(context);
   }
 
@@ -81,12 +82,12 @@ class AddTournamentProvider with ChangeNotifier {
       default:
         choice = null;
     }
-    print(choice);
+    // print(choice);
     notifyListeners();
   }
 
   Future<Object?> dialogBox(BuildContext context) {
-    print(teams);
+    // print(teams);
     return showAnimatedDialog(
       context: context,
       barrierDismissible: true,
@@ -109,7 +110,7 @@ class AddTournamentProvider with ChangeNotifier {
     );
     // selectIndex = index ?? selectIndex;
 
-    print('selectedIndex:$selectIndex');
+    // print('selectedIndex:$selectIndex');
     notifyListeners();
     this.singleSelectedIndexText = '${selectIndex ?? ''}';
   }
