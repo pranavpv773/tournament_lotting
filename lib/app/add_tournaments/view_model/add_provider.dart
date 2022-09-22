@@ -7,19 +7,21 @@ class AddTournamentProvider with ChangeNotifier {
   int? selectTeams;
   Color? color;
   String? singleSelectedIndexText;
-
+  int? selectGroupIndex;
   int? selectIndex;
   List<TextEditingController> controllers = [];
+  List<List> groups = [];
   final addTournamentKey = GlobalKey<FormState>();
   List<String> teams = [];
   List<String> teamsA = [];
   List<String> teamsB = [];
-  List groupList = [];
+  List<int> groupList = [];
 
   createGroup(int limit) {
-    print(limit);
-    for (int i = 4; i < limit; i++) {
+    // print(limit);
+    for (int i = 2; i < limit; i++) {
       if (limit % i == 0) {
+        print(i);
         groupList.add(i);
       }
     }
@@ -38,7 +40,7 @@ class AddTournamentProvider with ChangeNotifier {
       teams.clear();
       teamsA.clear();
       teamsB.clear();
-      print(teams);
+      // print(teams);
     }
   }
 
@@ -46,9 +48,9 @@ class AddTournamentProvider with ChangeNotifier {
     teams.shuffle();
     double limit = teams.length / 2;
     teamsA.addAll(teams.sublist(0, limit.toInt()));
-    print(teamsA);
+    // print(teamsA);
     teamsB.addAll(teams.sublist(limit.toInt()));
-    print(teamsB);
+    // print(teamsB);
     dialogBox(context);
   }
 
@@ -81,36 +83,34 @@ class AddTournamentProvider with ChangeNotifier {
       default:
         choice = null;
     }
-    print(choice);
+    // print(choice);
     notifyListeners();
   }
 
   Future<Object?> dialogBox(BuildContext context) {
-    print(teams);
-    return showAnimatedDialog(
+    // print(teams);
+    return showDialog<void>(
       context: context,
-      barrierDismissible: true,
       builder: (BuildContext context) {
-        return ClassicListDialogWidget(
-          titleText: 'Title',
-          listType: ListType.singleSelect,
-          activeColor: Colors.red,
-          selectedIndex: selectIndex,
-          dataList: List.generate(
-            groupList.length,
-            (index) {
-              return groupList[index];
-            },
-          ),
+        int selectedRadio = 0;
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            const Text("How Many Teams"),
+            const SizedBox(width: 25),
+            DropdownButton<int>(
+              // value: run.selectTeams,
+              items: groupList.map((int value) {
+                return DropdownMenuItem<int>(
+                  value: value,
+                  child: Text('$value'),
+                );
+              }).toList(),
+              onChanged: (newValue) {},
+            ),
+          ],
         );
       },
-      animationType: DialogTransitionType.size,
-      curve: Curves.linear,
     );
-    // selectIndex = index ?? selectIndex;
-
-    print('selectedIndex:$selectIndex');
-    notifyListeners();
-    this.singleSelectedIndexText = '${selectIndex ?? ''}';
   }
 }

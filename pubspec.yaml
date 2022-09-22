@@ -44,6 +44,8 @@ dependencies:
   pin_code_text_field: ^1.8.0
   pin_code_fields: ^7.4.0
   flutter_animated_dialog: ^2.0.1
+  fluttertoast: ^8.0.9
+  shared_preferences: ^2.0.15
 
 
 dev_dependencies:

@@ -31,9 +31,9 @@ class LoginButtons extends StatelessWidget {
         ),
       ),
       onPressed: (() async {
-        context
-            .read<LoginProvider>()
-            .onTabLoginFunction(context, email, password);
+        context.read<LoginProvider>().onTabLoginFunction(
+              context,
+            );
       }),
       child: Text(
         text,

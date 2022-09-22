@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view/widgets/terxtformwidget.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
-import 'package:tournament_lotter/app/constants/colors/colors.dart';
 
 class AddTournamentScreen extends StatelessWidget {
   const AddTournamentScreen(
