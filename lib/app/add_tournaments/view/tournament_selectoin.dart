@@ -86,18 +86,19 @@ class SelectTournamentScreen extends StatelessWidget {
                             DropdownButton<int>(
                               value: run.selectTeams,
                               items: <int>[
-                                4,
                                 6,
                                 8,
+                                9,
                                 10,
                                 12,
-                                14,
+                                15,
                                 16,
                                 18,
                                 20,
-                                22,
+                                21,
                                 24,
-                                26,
+                                25,
+                                27,
                                 28,
                                 30,
                               ].map((int value) {

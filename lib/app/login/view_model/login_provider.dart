@@ -31,13 +31,14 @@ class LoginProvider with ChangeNotifier {
           },
           verificationFailed: (FirebaseAuthException e) {
             Fluttertoast.showToast(
-                msg: e.message.toString(),
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.CENTER,
-                timeInSecForIosWeb: 1,
-                backgroundColor: Colors.red,
-                textColor: Colors.white,
-                fontSize: 16.0);
+              msg: e.message.toString(),
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0,
+            );
           },
           codeSent: (String verificationId, int? resendToken) {
             otpVisibility = true;
