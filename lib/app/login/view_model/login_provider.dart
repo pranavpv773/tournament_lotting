@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
+import 'package:tournament_lotter/app/login/view/login_screen.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/utility/view_model/auth_services.dart';
 import 'package:tournament_lotter/app/utility/view_model/snack_provider.dart';
@@ -60,6 +61,7 @@ class LoginProvider with ChangeNotifier {
 
   Future<void> logOut(BuildContext context) async {
     await AuthServices.auth.signOut();
+    RoutesProvider.removeScreenUntil(screen: const LoginScreen());
   }
 
   isValidEmail(String input) {
