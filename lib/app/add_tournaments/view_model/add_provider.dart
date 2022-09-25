@@ -65,6 +65,11 @@ class AddTournamentProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void selectRadio(int value) {
+    selectGroupIndex = value;
+    notifyListeners();
+  }
+
   void radioButtonChanges(String value) {
     radioValue = value;
     switch (value) {
@@ -89,28 +94,35 @@ class AddTournamentProvider with ChangeNotifier {
 
   Future<Object?> dialogBox(BuildContext context) {
     // print(teams);
-    return showDialog<void>(
+    return showAnimatedDialog(
       context: context,
+      barrierDismissible: true,
       builder: (BuildContext context) {
-        int selectedRadio = 0;
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            const Text("How Many Teams"),
-            const SizedBox(width: 25),
-            DropdownButton<int>(
-              // value: run.selectTeams,
-              items: groupList.map((int value) {
-                return DropdownMenuItem<int>(
-                  value: value,
-                  child: Text('$value'),
-                );
-              }).toList(),
-              onChanged: (newValue) {},
-            ),
-          ],
+        return ClassicListDialogWidget(
+          onPositiveClick: () {
+            selectRadio(selectIndex!);
+            print('object $selectGroupIndex');
+          },
+          titleText: 'Title',
+          listType: ListType.singleSelect,
+          activeColor: Color.fromARGB(255, 235, 89, 78),
+          selectedIndex: selectIndex,
+          dataList: List.generate(
+            groupList.length,
+            (index) {
+              // groupList[index] = selectIndex;
+              return groupList[index];
+            },
+          ),
         );
       },
+      animationType: DialogTransitionType.size,
+      curve: Curves.linear,
     );
+    // selectIndex = index ?? selectIndex;
+
+    // print('selectedIndex:$selectIndex');
+    notifyListeners();
+    this.singleSelectedIndexText = '${selectIndex ?? ''}';
   }
 }
