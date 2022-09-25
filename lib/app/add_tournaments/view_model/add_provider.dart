@@ -105,7 +105,7 @@ class AddTournamentProvider with ChangeNotifier {
           },
           titleText: 'Title',
           listType: ListType.singleSelect,
-          activeColor: Colors.red,
+          activeColor: Color.fromARGB(255, 235, 89, 78),
           selectedIndex: selectIndex,
           dataList: List.generate(
             groupList.length,

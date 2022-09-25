@@ -47,17 +47,19 @@ class AddTournamentScreen extends StatelessWidget {
               ),
             ),
             const Text('AVAILABLE GROUPS'),
-            Container(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 physics: const ScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    mainAxisExtent: 100,
-                    childAspectRatio: 3 / 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 0),
+                  maxCrossAxisExtent: 200,
+                  mainAxisExtent: 100,
+                  childAspectRatio: 3 / 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                ),
                 itemCount:
                     context.read<AddTournamentProvider>().groupList.length,
                 itemBuilder: (BuildContext ctx, index) {
@@ -65,11 +67,15 @@ class AddTournamentScreen extends StatelessWidget {
                   return Container(
                     width: 100,
                     height: 100,
-                    color: kPrimary,
-                    child: Text(context
-                        .read<AddTournamentProvider>()
-                        .groupList[index]
-                        .toString()),
+                    color: Colors.amber,
+                    child: Center(
+                      child: Text(
+                        context
+                            .read<AddTournamentProvider>()
+                            .groupList[index]
+                            .toString(),
+                      ),
+                    ),
                   );
                 },
               ),
