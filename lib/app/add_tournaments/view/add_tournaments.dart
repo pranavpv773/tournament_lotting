@@ -63,7 +63,6 @@ class AddTournamentScreen extends StatelessWidget {
                 itemCount:
                     context.read<AddTournamentProvider>().groupList.length,
                 itemBuilder: (BuildContext ctx, index) {
-                  print('object');
                   return Container(
                     width: 100,
                     height: 100,
