@@ -11,4 +11,11 @@ class AppStyle {
     fontWeight: FontWeight.bold,
     fontSize: 30,
   );
+  static TextStyle h2 = TextStyle(
+    fontFamily: fontFamily,
+    letterSpacing: 1.5,
+    color: kWhite,
+    fontWeight: FontWeight.bold,
+    fontSize: 12,
+  );
 }

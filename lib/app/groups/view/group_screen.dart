@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
+import 'package:tournament_lotter/app/app_style/app_style.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/groups/view_model/group_provider.dart';
 
 class GroupScreen extends StatelessWidget {
   const GroupScreen({Key? key}) : super(key: key);
@@ -11,47 +10,55 @@ class GroupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.builder(
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-        physics: const ScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: 200,
-          mainAxisExtent: 10,
-          childAspectRatio: 3 / 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
-        ),
-        itemCount: context.read<AddTournamentProvider>().groupList.length,
-        itemBuilder: (BuildContext ctx, index) {
-          return Material(
-            elevation: 10,
-            shadowColor: Colors.black,
-            child: Container(
-              color: kWhite,
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Icon(
-                          Icons.favorite_border,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(),
-                  ),
-                ],
+      appBar: AppBar(
+        title: Text('All Groups'),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: NetworkImage(
+                'http://sturdavinci.com/wp-content/uploads/edd/2015/05/Stadium-1-Layers.jpg',
               ),
+              fit: BoxFit.cover,
             ),
-          );
-        },
+          ),
+          child: GridView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            physics: const ScrollPhysics(),
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 250,
+              mainAxisExtent: 250,
+              childAspectRatio: 3 / 2,
+              crossAxisSpacing: 0,
+              mainAxisSpacing: 5,
+            ),
+            itemCount: context.read<GroupProvider>().alphabets.length,
+            itemBuilder: (BuildContext ctx, index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  color: Color.fromARGB(138, 255, 255, 255),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Group ${context.read<GroupProvider>().alphabets[index]}',
+                        style: AppStyle.h2,
+                      ),
+                      Container(
+                        width: 100,
+                        height: 100,
+                        decoration: const BoxDecoration(),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
