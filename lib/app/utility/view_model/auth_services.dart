@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/register/model/register_model.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';

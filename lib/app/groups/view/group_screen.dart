@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/app_style/app_style.dart';
-import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/groups/view_model/group_provider.dart';
 
 class GroupScreen extends StatelessWidget {
@@ -11,7 +10,7 @@ class GroupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('All Groups'),
+        title: const Text('All Groups'),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -40,7 +39,7 @@ class GroupScreen extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Container(
-                  color: Color.fromARGB(138, 255, 255, 255),
+                  color: const Color.fromARGB(138, 255, 255, 255),
                   child: Column(
                     children: [
                       Text(

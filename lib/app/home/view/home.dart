@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
-import 'package:tournament_lotter/app/routes/routes.dart';
 
 import 'widgets/navdrawer.dart';
 
