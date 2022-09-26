@@ -4,6 +4,8 @@ import 'package:tournament_lotter/app/add_tournaments/view/widgets/terxtformwidg
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
 import 'package:tournament_lotter/app/app_style/app_style.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/groups/view/group_screen.dart';
+import 'package:tournament_lotter/app/routes/routes.dart';
 
 class AddTournamentScreen extends StatelessWidget {
   const AddTournamentScreen(
@@ -64,17 +66,20 @@ class AddTournamentScreen extends StatelessWidget {
                 itemCount:
                     context.read<AddTournamentProvider>().groupList.length,
                 itemBuilder: (BuildContext ctx, index) {
-                  return Container(
-                    width: 100,
-                    height: 100,
-                    color: Colors.amber,
-                    child: Center(
-                      child: Text(
-                        context
-                            .read<AddTournamentProvider>()
-                            .groupList[index]
-                            .toString(),
-                        style: AppStyle.h1,
+                  return GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      color: Colors.amber,
+                      child: Center(
+                        child: Text(
+                          context
+                              .read<AddTournamentProvider>()
+                              .groupList[index]
+                              .toString(),
+                          style: AppStyle.h1,
+                        ),
                       ),
                     ),
                   );
@@ -89,9 +94,7 @@ class AddTournamentScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  context
-                      .read<AddTournamentProvider>()
-                      .createTeams(length, context);
+                  RoutesProvider.nextScreen(screen: GroupScreen());
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),

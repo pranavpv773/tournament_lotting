@@ -10,7 +10,7 @@ class AddTournamentProvider with ChangeNotifier {
   int? selectGroupIndex;
   int? selectIndex;
   List<TextEditingController> controllers = [];
-  List<List> groups = [];
+  List<List> listGroups = [];
   final addTournamentKey = GlobalKey<FormState>();
   List<String> teams = [];
   List<String> teamsA = [];
@@ -19,7 +19,7 @@ class AddTournamentProvider with ChangeNotifier {
 
   createGroup(int limit) {
     // print(limit);
-    for (int i = 3; i < limit; i++) {
+    for (int i = 2; i < limit; i++) {
       if (limit % i == 0) {
         print(i);
         groupList.add(i);
@@ -32,7 +32,7 @@ class AddTournamentProvider with ChangeNotifier {
     if (addTournamentKey.currentState!.validate()) {
       for (int i = 0; i < limit; i++) {
         teams.add(controllers[i].text);
-        controllers[i].clear();
+        // controllers[i].clear();
       }
 
       await createMatches(context);
@@ -44,6 +44,14 @@ class AddTournamentProvider with ChangeNotifier {
     }
   }
 
+  createList(int limit) async {
+    for (int i = 0; i <= limit; i++) {
+      await listGroups[i];
+      print(listGroups);
+    }
+    // createGroup(limit);
+  }
+
   createMatches(BuildContext context) async {
     teams.shuffle();
     double limit = teams.length / 2;
@@ -51,7 +59,6 @@ class AddTournamentProvider with ChangeNotifier {
     // print(teamsA);
     teamsB.addAll(teams.sublist(limit.toInt()));
     // print(teamsB);
-    dialogBox(context);
   }
 
   createController(int limit) {

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/groups/view_model/group_provider.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (create) => AddTournamentProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => GroupProvider(),
         ),
       ],
       child: MaterialApp(

@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
-        "lib/app/register/view"
+        "lib/app/register/view",
+        "lib/app/groups/view_model"
     ],
     "java.configuration.updateBuildConfiguration": "automatic"
 }
