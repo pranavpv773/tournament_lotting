@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view/widgets/terxtformwidget.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
+import 'package:tournament_lotter/app/app_style/app_style.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 
 class AddTournamentScreen extends StatelessWidget {
@@ -73,6 +74,7 @@ class AddTournamentScreen extends StatelessWidget {
                             .read<AddTournamentProvider>()
                             .groupList[index]
                             .toString(),
+                        style: AppStyle.h1,
                       ),
                     ),
                   );
@@ -82,7 +84,10 @@ class AddTournamentScreen extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(Colors.amber)),
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.amber,
+                  ),
+                ),
                 onPressed: () {
                   context
                       .read<AddTournamentProvider>()

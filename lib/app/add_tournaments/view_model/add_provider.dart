@@ -19,7 +19,7 @@ class AddTournamentProvider with ChangeNotifier {
 
   createGroup(int limit) {
     // print(limit);
-    for (int i = 2; i < limit; i++) {
+    for (int i = 3; i < limit; i++) {
       if (limit % i == 0) {
         print(i);
         groupList.add(i);
@@ -105,7 +105,7 @@ class AddTournamentProvider with ChangeNotifier {
           },
           titleText: 'Title',
           listType: ListType.singleSelect,
-          activeColor: Color.fromARGB(255, 235, 89, 78),
+          activeColor: const Color.fromARGB(255, 235, 89, 78),
           selectedIndex: selectIndex,
           dataList: List.generate(
             groupList.length,
@@ -119,10 +119,5 @@ class AddTournamentProvider with ChangeNotifier {
       animationType: DialogTransitionType.size,
       curve: Curves.linear,
     );
-    // selectIndex = index ?? selectIndex;
-
-    // print('selectedIndex:$selectIndex');
-    notifyListeners();
-    this.singleSelectedIndexText = '${selectIndex ?? ''}';
   }
 }
