@@ -1,10 +1,8 @@
 // ignore_for_file: use_build_context_synchronously
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
-import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/register/model/register_model.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/utility/view_model/auth_services.dart';
@@ -34,7 +32,7 @@ class RegisterProvider with ChangeNotifier {
             .errorPassword(context, "password not matching");
       } else {
         try {
-          RoutesProvider.nextScreen(screen: OtpVerificationBody());
+          RoutesProvider.nextScreen(screen: const OtpVerificationBody());
           await AuthServices.auth.verifyPhoneNumber(
             phoneNumber: phoneNumber.text,
             verificationCompleted: (PhoneAuthCredential credential) async {

@@ -1,7 +1,6 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tournament_lotter/app/add_tournaments/view/add_tournaments.dart';
 import 'package:tournament_lotter/app/add_tournaments/view/tournament_selectoin.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';

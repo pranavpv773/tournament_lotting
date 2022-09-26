@@ -104,7 +104,7 @@ class SelectTournamentScreen extends StatelessWidget {
                               ].map((int value) {
                                 return DropdownMenuItem<int>(
                                   value: value,
-                                  child: Text('${value}'),
+                                  child: Text('$value'),
                                 );
                               }).toList(),
                               onChanged: (newValue) {

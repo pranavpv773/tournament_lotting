@@ -21,11 +21,9 @@ class AddTournamentProvider with ChangeNotifier {
     // print(limit);
     for (int i = 2; i < limit; i++) {
       if (limit % i == 0) {
-        print(i);
         groupList.add(i);
       }
     }
-    print('group:$groupList');
   }
 
   void createTeams(int limit, BuildContext context) async {
@@ -46,8 +44,7 @@ class AddTournamentProvider with ChangeNotifier {
 
   createList(int limit) async {
     for (int i = 0; i <= limit; i++) {
-      await listGroups[i];
-      print(listGroups);
+      listGroups[i];
     }
     // createGroup(limit);
   }
@@ -108,7 +105,6 @@ class AddTournamentProvider with ChangeNotifier {
         return ClassicListDialogWidget(
           onPositiveClick: () {
             selectRadio(selectIndex!);
-            print('object $selectGroupIndex');
           },
           titleText: 'Title',
           listType: ListType.singleSelect,

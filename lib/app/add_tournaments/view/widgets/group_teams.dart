@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class GroupingTeams extends StatelessWidget {
   const GroupingTeams({Key? key}) : super(key: key);
@@ -10,7 +8,7 @@ class GroupingTeams extends StatelessWidget {
     return GridView.count(
       crossAxisCount: 2,
       children: List<Widget>.generate(5, (index) {
-        return Container(
+        return SizedBox(
           width: 50,
           height: 50,
           child: GridTile(
