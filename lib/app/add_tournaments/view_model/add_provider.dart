@@ -20,7 +20,8 @@ class AddTournamentProvider with ChangeNotifier {
   createGroup(int limit) {
     // print(limit);
     for (int i = 2; i < limit; i++) {
-      if (limit % i == 0) {
+      if (limit % i == 0 && i != limit / 2) {
+        print(i);
         groupList.add(i);
       }
     }
@@ -40,13 +41,6 @@ class AddTournamentProvider with ChangeNotifier {
       teamsB.clear();
       // print(teams);
     }
-  }
-
-  createList(int limit) async {
-    for (int i = 0; i <= limit; i++) {
-      listGroups[i];
-    }
-    // createGroup(limit);
   }
 
   createMatches(BuildContext context) async {
