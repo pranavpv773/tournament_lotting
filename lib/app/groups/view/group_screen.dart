@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
 import 'package:tournament_lotter/app/app_style/app_style.dart';
 import 'package:tournament_lotter/app/groups/view_model/group_provider.dart';
 
@@ -34,7 +35,7 @@ class GroupScreen extends StatelessWidget {
               crossAxisSpacing: 0,
               mainAxisSpacing: 5,
             ),
-            itemCount: context.read<GroupProvider>().alphabets.length,
+            itemCount: context.read<AddTournamentProvider>().count ?? 0,
             itemBuilder: (BuildContext ctx, index) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
