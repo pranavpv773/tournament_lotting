@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view/widgets/terxtformwidget.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
@@ -66,7 +67,11 @@ class AddTournamentScreen extends StatelessWidget {
                     context.read<AddTournamentProvider>().groupList.length,
                 itemBuilder: (BuildContext ctx, index) {
                   return GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      context.read<AddTournamentProvider>().count = context
+                          .read<AddTournamentProvider>()
+                          .groupList[index];
+                    },
                     child: Container(
                       width: 100,
                       height: 100,
@@ -93,9 +98,14 @@ class AddTournamentScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  RoutesProvider.nextScreen(
-                    screen: const GroupScreen(),
-                  );
+                  context.read<AddTournamentProvider>().count != null
+                      ? RoutesProvider.nextScreen(
+                          screen: const GroupScreen(),
+                        )
+                      : Fluttertoast.showToast(
+                          msg: "resp.message",
+                          toastLength: Toast.LENGTH_LONG,
+                        );
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),

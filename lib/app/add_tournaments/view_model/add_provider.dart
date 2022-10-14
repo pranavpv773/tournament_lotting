@@ -16,6 +16,7 @@ class AddTournamentProvider with ChangeNotifier {
   List<String> teamsA = [];
   List<String> teamsB = [];
   List<int> groupList = [];
+  int? count;
 
   createGroup(int limit) {
     // print(limit);
