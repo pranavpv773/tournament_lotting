@@ -47,6 +47,7 @@ dependencies:
   fluttertoast: ^8.0.9
   shared_preferences: ^2.0.15
   google_fonts: ^3.0.1
+  cached_network_image: ^3.2.1
 
 
 dev_dependencies:

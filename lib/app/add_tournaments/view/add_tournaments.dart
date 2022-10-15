@@ -72,20 +72,7 @@ class AddTournamentScreen extends StatelessWidget {
                           .read<AddTournamentProvider>()
                           .groupList[index];
                     },
-                    child: Container(
-                      width: 100,
-                      height: 100,
-                      color: Colors.amber,
-                      child: Center(
-                        child: Text(
-                          context
-                              .read<AddTournamentProvider>()
-                              .groupList[index]
-                              .toString(),
-                          style: AppStyle.h1,
-                        ),
-                      ),
-                    ),
+                    child: AvailableGroupContainer(index: index),
                   );
                 },
               ),
@@ -103,7 +90,7 @@ class AddTournamentScreen extends StatelessWidget {
                           screen: const GroupScreen(),
                         )
                       : Fluttertoast.showToast(
-                          msg: "resp.message",
+                          msg: "Please select available group",
                           toastLength: Toast.LENGTH_LONG,
                         );
                 },
@@ -114,6 +101,28 @@ class AddTournamentScreen extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class AvailableGroupContainer extends StatelessWidget {
+  const AvailableGroupContainer({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+  final int index;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 100,
+      height: 100,
+      color: Colors.amber,
+      child: Center(
+        child: Text(
+          context.read<AddTournamentProvider>().groupList[index].toString(),
+          style: AppStyle.h1,
         ),
       ),
     );
