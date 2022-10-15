@@ -16,6 +16,8 @@ class GroupScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Container(
+          height: double.infinity,
+          width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: NetworkImage(
@@ -37,27 +39,44 @@ class GroupScreen extends StatelessWidget {
             ),
             itemCount: context.read<AddTournamentProvider>().count ?? 0,
             itemBuilder: (BuildContext ctx, index) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  color: const Color.fromARGB(138, 255, 255, 255),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Group ${context.read<GroupProvider>().alphabets[index]}',
-                        style: AppStyle.h2,
-                      ),
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: const BoxDecoration(),
-                      ),
-                    ],
-                  ),
-                ),
+              return CardBuilder(
+                index: index,
               );
             },
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class CardBuilder extends StatelessWidget {
+  const CardBuilder({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+  final int index;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(138, 255, 255, 255),
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          children: [
+            Text(
+              'Group ${context.read<GroupProvider>().alphabets[index]}',
+              style: AppStyle.h2.copyWith(color: Colors.indigo),
+            ),
+            Container(
+              width: 100,
+              height: 100,
+              decoration: const BoxDecoration(),
+            ),
+          ],
         ),
       ),
     );
