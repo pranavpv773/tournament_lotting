@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_images.dart';
+import 'package:git_app/app/app_styles/app_text_styles.dart';
 import 'package:git_app/app/utils/view/container_widget.dart';
 
 class GetStartScreen extends StatelessWidget {
@@ -20,8 +21,8 @@ class GetStartScreen extends StatelessWidget {
         toolbarHeight: 400,
         centerTitle: true,
         title: Image.asset(
-          AppImages.lottie,
-          width: width / 2,
+          AppImages.lap,
+          width: width,
         ),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
@@ -32,12 +33,36 @@ class GetStartScreen extends StatelessWidget {
       body: ContainerWithChild(
         height: height,
         width: width,
-        child: Column(
-          children: const [
-            Text("Get any Repo, Anytime"),
-            Text(
-                "Choose from 150,000 Repositories with most stared repositories of every month.")
-          ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                "Get any Repo, Anytime",
+                style: AppTextStyles.h1,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    "Choose from 150,000 Repositories with\n most stared repositories of every\n month.",
+                    style: AppTextStyles.h2,
+                  ),
+                ),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
+                  primary: AppColors.kPink,
+                  textStyle: AppTextStyles.buttonText,
+                ),
+                onPressed: () {},
+                child: const Text('Start Commit'),
+              ),
+            ],
+          ),
         ),
       ),
     );
