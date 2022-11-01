@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_images.dart';
 import 'package:git_app/app/app_styles/app_text_styles.dart';
+import 'package:git_app/app/login/view/login.dart';
 import 'package:git_app/app/utils/view/container_widget.dart';
+import 'package:git_app/routes/routes.dart';
 
 class GetStartScreen extends StatelessWidget {
   const GetStartScreen({Key? key}) : super(key: key);
@@ -51,20 +53,46 @@ class GetStartScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 80, vertical: 10),
-                  primary: AppColors.kPink,
-                  textStyle: AppTextStyles.buttonText,
-                ),
-                onPressed: () {},
-                child: const Text('Start Commit'),
+              ButtonWidget(
+                horizontal: 80,
+                vertical: 10,
+                fn: () {
+                  Routes.removeScreen(screen: const LoginScreen());
+                },
+                title: 'Start Commit',
               ),
             ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class ButtonWidget extends StatelessWidget {
+  const ButtonWidget({
+    Key? key,
+    required this.horizontal,
+    required this.vertical,
+    required this.fn,
+    required this.title,
+  }) : super(key: key);
+  final double horizontal;
+  final double vertical;
+  final VoidCallback fn;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        padding:
+            EdgeInsets.symmetric(horizontal: horizontal, vertical: vertical),
+        primary: AppColors.kPink,
+        textStyle: AppTextStyles.buttonText,
+      ),
+      onPressed: fn,
+      child: Text(title),
     );
   }
 }

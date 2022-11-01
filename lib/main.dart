@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:git_app/app/get_start/view/get_start.dart';
+import 'package:git_app/app/splash/view/splash.dart';
 import 'package:git_app/app/splash/view_model/splash_provider.dart';
 import 'package:git_app/routes/routes.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const GetStartScreen(),
+        home: const SplashScreen(),
       ),
     );
   }
