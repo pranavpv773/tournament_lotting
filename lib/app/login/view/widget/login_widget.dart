@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/get_start/view/get_start.dart';
 import 'package:git_app/app/home/view/home_screen.dart';
+import 'package:git_app/app/home/view_model/home_provider.dart';
 import 'package:git_app/routes/routes.dart';
+import 'package:provider/provider.dart';
 
 import 'textform_widget.dart';
 
@@ -29,7 +31,8 @@ class LoginFormWidget extends StatelessWidget {
             child: ButtonWidget(
               horizontal: 40,
               vertical: 10,
-              fn: () {
+              fn: () async {
+                await context.read<HomeNotifier>().fetchStaredRepo();
                 Routes.nextScreen(
                   screen: const HomeScreen(),
                 );

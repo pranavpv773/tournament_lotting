@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
+import 'package:git_app/app/home/view_model/home_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -73,17 +75,24 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: SizedBox(
-        height: height,
-        width: width,
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text("Most Stared Repository"),
-            ],
-          ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: SizedBox(
+          height: height,
+          width: width,
+          child: Consumer<HomeNotifier>(builder: (context, val, _) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Most Stared Repository"),
+                ListTile(
+                  title: Text(
+                    val.itemList[0].name.toString(),
+                  ),
+                )
+              ],
+            );
+          }),
         ),
       ),
     );

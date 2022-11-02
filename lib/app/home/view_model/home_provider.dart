@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:git_app/app/home/api_services/api_services.dart';
 import 'package:git_app/app/home/model/repo_model.dart';
 
@@ -6,11 +7,16 @@ import 'package:git_app/app/home/model/repo_model.dart';
 
 class HomeNotifier with ChangeNotifier {
   List<Item> itemList = [];
-  fetchjeansColor(String color) async {
-    RepositoryModel resp = await StaredApiService().fetchStaredRepo();
+  fetchStaredRepo() async {
+    RepoModel? resp = await StaredApiService().fetchStaredRepo();
 
-    if (resp.items!.isNotEmpty) {
-      notifyListeners();
-    } else {}
+    if (resp!.incompleteResults!) {
+      itemList.addAll(resp.items!);
+    } else {
+      Fluttertoast.showToast(
+        msg: "Some error",
+        toastLength: Toast.LENGTH_LONG,
+      );
+    }
   }
 }
