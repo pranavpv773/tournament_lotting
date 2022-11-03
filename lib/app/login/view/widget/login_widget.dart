@@ -31,8 +31,8 @@ class LoginFormWidget extends StatelessWidget {
             child: ButtonWidget(
               horizontal: 40,
               vertical: 10,
-              fn: () async {
-                await context.read<HomeNotifier>().fetchStaredRepo();
+              fn: () {
+                context.read<HomeNotifier>().fetchStaredRepo();
                 Routes.nextScreen(
                   screen: const HomeScreen(),
                 );

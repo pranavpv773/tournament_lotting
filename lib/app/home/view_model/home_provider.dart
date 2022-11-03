@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:git_app/app/home/api_services/api_services.dart';
@@ -12,6 +14,8 @@ class HomeNotifier with ChangeNotifier {
 
     if (resp!.incompleteResults!) {
       itemList.addAll(resp.items!);
+      notifyListeners();
+      log("added");
     } else {
       Fluttertoast.showToast(
         msg: "Some error",

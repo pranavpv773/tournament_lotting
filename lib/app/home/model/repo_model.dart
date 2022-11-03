@@ -55,8 +55,8 @@ class Item {
     this.updatedAt,
     this.pushedAt,
     this.homepage,
-    // this.size,
-    // this.stargazersCount,
+    this.size,
+    this.stargazersCount,
     // this.watchersCount,
     this.language,
     this.hasIssues,
@@ -92,8 +92,8 @@ class Item {
   DateTime? pushedAt;
 
   String? homepage;
-  // int? size;
-  // int? stargazersCount;
+  int? size;
+  int? stargazersCount;
   // int? watchersCount;
   String? language;
   bool? hasIssues;
@@ -130,8 +130,8 @@ class Item {
         updatedAt: DateTime.parse(json["updated_at"]),
         pushedAt: DateTime.parse(json["pushed_at"]),
         homepage: json["homepage"],
-        // size: json["size"],
-        // stargazersCount: json["stargazers_count"],
+        size: json["size"],
+        stargazersCount: json["stargazers_count"],
         // watchersCount: json["watchers_count"],
         language: json["language"],
         hasIssues: json["has_issues"],
@@ -166,8 +166,8 @@ class Item {
         "updated_at": updatedAt!.toIso8601String(),
         "pushed_at": pushedAt!.toIso8601String(),
         "homepage": homepage,
-        // "size": size,
-        // "stargazers_count": stargazersCount,
+        "size": size,
+        "stargazers_count": stargazersCount,
         // "watchers_count": watchersCount,
         "language": language,
         "has_issues": hasIssues,
