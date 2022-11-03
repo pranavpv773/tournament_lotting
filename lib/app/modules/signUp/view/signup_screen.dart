@@ -33,16 +33,19 @@ class SignUpScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: SizedBox(
-                      height: height / 1.8,
+                      height: height / 1.5,
                       width: width / 1,
                       child: Expanded(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
-                              "Signup",
-                              style: AppTextStyles.h1.copyWith(
-                                color: AppColors.kBlack,
+                            Padding(
+                              padding: const EdgeInsets.all(25.0),
+                              child: Text(
+                                "Signup",
+                                style: AppTextStyles.h1.copyWith(
+                                  color: AppColors.kBlack,
+                                ),
                               ),
                             ),
                             Column(
@@ -98,7 +101,9 @@ class SignUpScreen extends StatelessWidget {
                                     ),
                                     const Text(
                                       'Accept our terms and conditions ',
-                                      style: TextStyle(fontSize: 16.0),
+                                      style: TextStyle(
+                                        fontSize: 16.0,
+                                      ),
                                     ),
                                   ],
                                 ),

@@ -11,9 +11,16 @@ class User {
 
   String? password;
 
-  User({this.firstName, this.password, this.lastName, this.email, this.phone});
+  User(
+      {this.firstName,
+      this.password,
+      this.lastName,
+      this.email,
+      this.phone,
+      this.id});
 
   User.map(dynamic obj) {
+    id = obj['id'];
     firstName = obj['firstName'];
     password = obj['password'];
     lastName = obj['lastName'];
