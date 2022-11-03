@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/modules/get_start/view/get_start.dart';
 import 'package:git_app/app/modules/login/view_model/login_notifier.dart';
-import 'package:git_app/app/modules/signUp/view_model/db_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'textform_widget.dart';
@@ -34,13 +33,7 @@ class LoginFormWidget extends StatelessWidget {
               horizontal: 40,
               vertical: 10,
               fn: () {
-                context.read<DbFuctions>().getLogin(
-                    context.read<LoginNotifier>().userName.text,
-                    context.read<LoginNotifier>().password.text);
-                // context.read<HomeNotifier>().fetchStaredRepo();
-                // Routes.nextScreen(
-                //   screen: const HomeScreen(),
-                // );
+                context.read<LoginNotifier>().getLogin(context);
               },
               title: 'Sign In',
             ),

@@ -21,20 +21,22 @@ class UserNotifier with ChangeNotifier {
     log(lastNameCtrl.text);
     log(passwordCtrl.text);
     log(phonectrl.text);
+    if (signupKey.currentState!.validate()) {
+      log("signup");
 
-    log("signup");
-    User user = User(
-      email: emailCtrl.text,
-      firstName: firstNameCtrl.text,
-      lastName: lastNameCtrl.text,
-      password: passwordCtrl.text,
-      phone: passwordCtrl.text,
-    );
-    await context.read<DbFuctions>().addUser(user);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Success'),
-      ),
-    );
+      User user = User(
+        email: emailCtrl.text,
+        firstName: firstNameCtrl.text,
+        lastName: lastNameCtrl.text,
+        password: passwordCtrl.text,
+        phone: int.parse(passwordCtrl.text),
+      );
+      await context.read<DbFuctions>().addUser(user);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Success'),
+        ),
+      );
+    }
   }
 }

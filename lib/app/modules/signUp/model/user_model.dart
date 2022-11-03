@@ -1,15 +1,15 @@
 class User {
-  String? id;
+  int? id;
 
-  String? firstName;
+  String firstName;
 
-  String? lastName;
+  String lastName;
 
-  String? phone;
+  int phone;
 
-  String? email;
+  String email;
 
-  String? password;
+  String password;
 
   User(
       {required this.firstName,
@@ -19,22 +19,19 @@ class User {
       required this.phone,
       this.id});
 
-  User.map(dynamic obj) {
-    id = obj['id'];
-    firstName = obj['firstName'];
-    password = obj['password'];
-    lastName = obj['lastName'];
-    phone = obj['phone'];
-    email = obj['email'];
-  }
-
-  Map<String, dynamic> toMap() {
-    var map = <String, dynamic>{};
-    map["firstName"] = firstName;
-    map["password"] = password;
-    map["lastName"] = lastName;
-    map["phone"] = phone;
-    map["email"] = email;
-    return map;
+  static User fromMap(Map<String, Object?> map) {
+    final id = map['id'] as int;
+    final firstName = map['firstName'] as String;
+    final password = map['password'] as String;
+    final lastName = map['lastName'] as String;
+    final phone = map['phone'] as int;
+    final email = map['email'] as String;
+    return User(
+        id: id,
+        firstName: firstName,
+        password: password,
+        lastName: lastName,
+        email: email,
+        phone: phone);
   }
 }

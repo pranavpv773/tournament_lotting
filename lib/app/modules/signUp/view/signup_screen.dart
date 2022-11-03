@@ -39,98 +39,95 @@ class SignUpScreen extends StatelessWidget {
                     child: SizedBox(
                       height: height / 1.3,
                       width: width / 1,
-                      child: Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(25.0),
-                              child: Text(
-                                "Signup",
-                                style: AppTextStyles.h1.copyWith(
-                                  color: AppColors.kBlack,
-                                ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(25.0),
+                            child: Text(
+                              "Signup",
+                              style: AppTextStyles.h1.copyWith(
+                                color: AppColors.kBlack,
                               ),
                             ),
-                            Form(
-                              key: context.read<UserNotifier>().signupKey,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Expanded(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Expanded(
-                                              flex: 6,
-                                              child: TextformsField(
-                                                controller: context
-                                                    .read<UserNotifier>()
-                                                    .firstNameCtrl,
-                                                title: "Firstname",
-                                              ),
+                          ),
+                          Form(
+                            key: context.read<UserNotifier>().signupKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Expanded(
+                                            flex: 6,
+                                            child: TextformsField(
+                                              controller: context
+                                                  .read<UserNotifier>()
+                                                  .firstNameCtrl,
+                                              title: "Firstname",
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
-                                      Expanded(
-                                        child: Row(
-                                          children: <Widget>[
-                                            Expanded(
-                                              flex: 6,
-                                              child: TextformsField(
-                                                controller: context
-                                                    .read<UserNotifier>()
-                                                    .lastNameCtrl,
-                                                title: "Lastname",
-                                              ),
-                                            )
-                                          ],
-                                        ),
+                                    ),
+                                    Expanded(
+                                      child: Row(
+                                        children: <Widget>[
+                                          Expanded(
+                                            flex: 6,
+                                            child: TextformsField(
+                                              controller: context
+                                                  .read<UserNotifier>()
+                                                  .lastNameCtrl,
+                                              title: "Lastname",
+                                            ),
+                                          )
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                  TextformsField(
-                                    controller:
-                                        context.read<UserNotifier>().emailCtrl,
-                                    title: "Email",
-                                    icon1: const Icon(Icons.email_outlined),
-                                  ),
-                                  TextformsField(
-                                    controller:
-                                        context.read<UserNotifier>().phonectrl,
-                                    title: "Phone",
-                                    icon1: const Icon(Icons.phone_callback),
-                                  ),
-                                  TextformsField(
-                                    controller: context
-                                        .read<UserNotifier>()
-                                        .passwordCtrl,
-                                    title: "Password",
-                                    icon1: const Icon(Icons.lock_outline),
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: const <Widget>[
-                                      // Checkbox(
-                                      //   value: false,
-                                      //   onChanged: (value) {},
-                                      // ),
-                                      Text(
-                                        'Accept our terms and conditions ',
-                                        style: TextStyle(
-                                          fontSize: 16.0,
-                                        ),
+                                    ),
+                                  ],
+                                ),
+                                TextformsField(
+                                  controller:
+                                      context.read<UserNotifier>().emailCtrl,
+                                  title: "Email",
+                                  icon1: const Icon(Icons.email_outlined),
+                                ),
+                                TextformsField(
+                                  controller:
+                                      context.read<UserNotifier>().phonectrl,
+                                  title: "Phone",
+                                  icon1: const Icon(Icons.phone_callback),
+                                ),
+                                TextformsField(
+                                  controller:
+                                      context.read<UserNotifier>().passwordCtrl,
+                                  title: "Password",
+                                  icon1: const Icon(Icons.lock_outline),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: <Widget>[
+                                    Checkbox(
+                                      value: false,
+                                      onChanged: (value) {},
+                                    ),
+                                    const Text(
+                                      'Accept our terms and conditions ',
+                                      style: TextStyle(
+                                        fontSize: 16.0,
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

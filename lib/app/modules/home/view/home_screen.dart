@@ -4,6 +4,7 @@ import 'package:git_app/app/modules/home/view/widgets/builder_widget.dart';
 import 'package:git_app/app/modules/home/view/widgets/shimmer.dart';
 import 'package:git_app/app/modules/home/view_model/home_provider.dart';
 import 'package:git_app/app/modules/login/view/widget/textform_widget.dart';
+import 'package:git_app/app/modules/login/view_model/login_notifier.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -48,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                                 height: 20,
                               ),
                               Text(
-                                "Hello Pranav",
+                                "Hello ${context.read<LoginNotifier>().userData[0].firstName}",
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: AppColors.kBlack,

@@ -28,7 +28,7 @@ class AppTextStyles {
     fontFamily: GoogleFonts.radley().fontFamily,
   );
   static TextStyle formField = TextStyle(
-    color: AppColors.primary1,
+    color: AppColors.kBlack,
     fontWeight: FontWeight.bold,
     fontSize: 18,
   );

@@ -17,61 +17,59 @@ class TextformsField extends StatelessWidget {
   final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 20,
-        right: 10,
-        left: 10,
+      padding: EdgeInsets.only(
+        top: height / 40,
+        right: width * 0.02,
+        left: width * 0.02,
       ),
-      child: Material(
-        borderRadius: BorderRadius.circular(
-          10,
-        ),
-        elevation: 2,
-        shadowColor: AppColors.kBlack,
-        child: TextFormField(
-          controller: controller,
-          keyboardType: TextInputType.emailAddress,
-          style: AppTextStyles.formField,
-          validator: (value) {
-            return "please fill this field";
-          },
-          decoration: InputDecoration(
-            fillColor: AppColors.primary,
-            filled: true,
-            suffixIcon: icon1,
-            prefixIcon: icon,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-              borderSide: BorderSide(
-                color: Colors.grey[100] as Color,
-                width: 2.0,
-              ),
+      child: TextFormField(
+        controller: controller,
+        keyboardType: TextInputType.emailAddress,
+        style: AppTextStyles.formField,
+        validator: (value) {
+          if (value!.isEmpty) {
+            return " Please fill this field";
+          }
+        },
+        decoration: InputDecoration(
+          fillColor: AppColors.primary,
+          filled: true,
+          suffixIcon: icon1,
+          prefixIcon: icon,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+              10,
             ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-              borderSide: BorderSide(
-                color: AppColors.primary1,
-                width: 2.0,
-              ),
+            borderSide: BorderSide(
+              color: Colors.grey[400] as Color,
+              width: 2.0,
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                10,
-              ),
-              borderSide: const BorderSide(
-                width: 2.0,
-              ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+              10,
             ),
-            hintText: title,
-            hintStyle: const TextStyle(
-              fontSize: 15,
-              color: Colors.grey,
+            borderSide: BorderSide(
+              color: AppColors.primary1,
+              width: 2.0,
             ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(
+              10,
+            ),
+            borderSide: const BorderSide(
+              width: 2.0,
+            ),
+          ),
+          hintText: title,
+          hintStyle: const TextStyle(
+            fontSize: 15,
+            color: Colors.grey,
           ),
         ),
       ),
