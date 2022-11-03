@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:git_app/app/get_start/view/get_start.dart';
+import 'package:git_app/app/modules/get_start/view/get_start.dart';
 import 'package:git_app/routes/routes.dart';
 
 class SplashNotifier with ChangeNotifier {

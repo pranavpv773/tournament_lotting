@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_text_styles.dart';
-import 'package:git_app/app/home/view_model/home_provider.dart';
+import 'package:git_app/app/modules/home/view_model/home_provider.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 

@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:flutter/widgets.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:git_app/app/home/api_services/api_services.dart';
-import 'package:git_app/app/home/model/repo_model.dart';
+import 'package:git_app/app/modules/home/api_services/api_services.dart';
+import 'package:git_app/app/modules/home/model/repo_model.dart';
 
 // ignore: depend_on_referenced_packages
 

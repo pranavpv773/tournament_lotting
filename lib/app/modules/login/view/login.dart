@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_text_styles.dart';
-import 'package:git_app/app/get_start/view/get_start.dart';
-import 'package:git_app/app/signUp/view/signup_screen.dart';
-import 'package:git_app/app/utils/view/container_widget.dart';
+import 'package:git_app/app/modules/get_start/view/get_start.dart';
+import 'package:git_app/app/modules/signUp/view/signup_screen.dart';
+import 'package:git_app/app/modules/utils/view/container_widget.dart';
 import 'package:git_app/routes/routes.dart';
 
 import 'widget/login_widget.dart';

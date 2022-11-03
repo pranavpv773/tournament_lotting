@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:git_app/app/home/view_model/home_provider.dart';
-import 'package:git_app/app/splash/view/splash.dart';
-import 'package:git_app/app/splash/view_model/splash_provider.dart';
+import 'package:git_app/app/modules/home/view_model/home_provider.dart';
+import 'package:git_app/app/modules/splash/view/splash.dart';
+import 'package:git_app/app/modules/splash/view_model/splash_provider.dart';
 import 'package:git_app/routes/routes.dart';
 import 'package:provider/provider.dart';
 

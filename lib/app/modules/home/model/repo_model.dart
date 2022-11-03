@@ -2,6 +2,8 @@
 //
 //     final repoModel = repoModelFromJson(jsonString);
 
+// ignore_for_file: constant_identifier_names
+
 import 'dart:convert';
 
 RepoModel repoModelFromJson(String str) => RepoModel.fromJson(json.decode(str));

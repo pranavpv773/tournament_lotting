@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_text_styles.dart';
-import 'package:git_app/app/get_start/view/get_start.dart';
-import 'package:git_app/app/login/view/widget/textform_widget.dart';
-import 'package:git_app/app/utils/view/container_widget.dart';
+import 'package:git_app/app/modules/get_start/view/get_start.dart';
+import 'package:git_app/app/modules/login/view/widget/textform_widget.dart';
+import 'package:git_app/app/modules/utils/view/container_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);

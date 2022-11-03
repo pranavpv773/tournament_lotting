@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:git_app/app/get_start/view/get_start.dart';
-import 'package:git_app/app/home/view/home_screen.dart';
-import 'package:git_app/app/home/view_model/home_provider.dart';
+import 'package:git_app/app/modules/get_start/view/get_start.dart';
+import 'package:git_app/app/modules/home/view/home_screen.dart';
+import 'package:git_app/app/modules/home/view_model/home_provider.dart';
 import 'package:git_app/routes/routes.dart';
 import 'package:provider/provider.dart';
 

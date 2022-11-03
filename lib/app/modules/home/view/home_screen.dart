@@ -1,9 +1,9 @@
-import 'package:git_app/app/home/view/widgets/builder_widget.dart';
-import 'package:git_app/app/home/view/widgets/shimmer.dart';
-import 'package:git_app/app/login/view/widget/textform_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
-import 'package:git_app/app/home/view_model/home_provider.dart';
+import 'package:git_app/app/modules/home/view/widgets/builder_widget.dart';
+import 'package:git_app/app/modules/home/view/widgets/shimmer.dart';
+import 'package:git_app/app/modules/home/view_model/home_provider.dart';
+import 'package:git_app/app/modules/login/view/widget/textform_widget.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
