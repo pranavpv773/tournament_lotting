@@ -107,8 +107,8 @@ class HomeScreen extends StatelessWidget {
                       child: const FlexibleSpaceBar(
                         stretchModes: [StretchMode.blurBackground],
                         centerTitle: true,
-                        title:
-                            TextformsField(title: "Search", icon: Icons.search),
+                        title: TextformsField(
+                            title: "Search", icon: Icon(Icons.search)),
                       ),
                     )
 

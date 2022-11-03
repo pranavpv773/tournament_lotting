@@ -20,11 +20,11 @@ class LoginFormWidget extends StatelessWidget {
         children: [
           const TextformsField(
             title: "Username",
-            icon: Icons.person,
+            icon: Icon(Icons.person),
           ),
           const TextformsField(
             title: "Password",
-            icon: Icons.lock,
+            icon: Icon(Icons.lock),
           ),
           Padding(
             padding: const EdgeInsets.all(24.0),

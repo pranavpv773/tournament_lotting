@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_text_styles.dart';
 import 'package:git_app/app/get_start/view/get_start.dart';
+import 'package:git_app/app/signUp/view/signup_screen.dart';
 import 'package:git_app/app/utils/view/container_widget.dart';
 import 'package:git_app/routes/routes.dart';
 
@@ -25,6 +26,9 @@ class LoginScreen extends StatelessWidget {
             Center(
               child: Card(
                 color: AppColors.primary,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
                 elevation: 50,
                 shadowColor: AppColors.primary1,
                 child: SizedBox(
@@ -52,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                 vertical: 10,
                 fn: () {
                   Routes.nextScreen(
-                    screen: const LoginScreen(),
+                    screen: const SignUpScreen(),
                   );
                 },
                 title: 'Sign Up',
