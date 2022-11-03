@@ -5,4 +5,5 @@ class AppColors {
   static Color primary1 = Colors.pink[100] as Color;
   static Color kPink = Colors.pink[300] as Color;
   static Color kBlack = Colors.black;
+  static Color kGrey = Colors.grey;
 }

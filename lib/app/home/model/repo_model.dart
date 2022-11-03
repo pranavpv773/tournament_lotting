@@ -57,7 +57,7 @@ class Item {
     this.homepage,
     this.size,
     this.stargazersCount,
-    // this.watchersCount,
+    this.watchersCount,
     this.language,
     this.hasIssues,
     this.topics,
@@ -94,7 +94,7 @@ class Item {
   String? homepage;
   int? size;
   int? stargazersCount;
-  // int? watchersCount;
+  int? watchersCount;
   String? language;
   bool? hasIssues;
 
@@ -132,7 +132,7 @@ class Item {
         homepage: json["homepage"],
         size: json["size"],
         stargazersCount: json["stargazers_count"],
-        // watchersCount: json["watchers_count"],
+        watchersCount: json["watchers_count"],
         language: json["language"],
         hasIssues: json["has_issues"],
         topics: List<String>.from(json["topics"].map((x) => x)),
@@ -168,7 +168,7 @@ class Item {
         "homepage": homepage,
         "size": size,
         "stargazers_count": stargazersCount,
-        // "watchers_count": watchersCount,
+        "watchers_count": watchersCount,
         "language": language,
         "has_issues": hasIssues,
         // "forks_count": forksCount,
