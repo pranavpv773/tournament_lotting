@@ -5,18 +5,18 @@ class User {
 
   String? lastName;
 
-  int? phone;
+  String? phone;
 
   String? email;
 
   String? password;
 
   User(
-      {this.firstName,
-      this.password,
-      this.lastName,
-      this.email,
-      this.phone,
+      {required this.firstName,
+      required this.password,
+      required this.lastName,
+      required this.email,
+      required this.phone,
       this.id});
 
   User.map(dynamic obj) {

@@ -8,6 +8,7 @@ import 'package:git_app/app/modules/home/model/repo_model.dart';
 // ignore: depend_on_referenced_packages
 
 class HomeNotifier with ChangeNotifier {
+  final searchCntrl = TextEditingController();
   List<Item> itemList = [];
   fetchStaredRepo() async {
     RepoModel? resp = await StaredApiService().fetchStaredRepo();

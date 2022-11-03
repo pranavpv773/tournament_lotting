@@ -8,11 +8,13 @@ class TextformsField extends StatelessWidget {
     Key? key,
     required this.title,
     this.icon,
+    required this.controller,
     this.icon1,
   }) : super(key: key);
   final String title;
   final Widget? icon;
   final Widget? icon1;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,6 +30,7 @@ class TextformsField extends StatelessWidget {
         elevation: 2,
         shadowColor: AppColors.kBlack,
         child: TextFormField(
+          controller: controller,
           keyboardType: TextInputType.emailAddress,
           style: AppTextStyles.formField,
           validator: (value) {

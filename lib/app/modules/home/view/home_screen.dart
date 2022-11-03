@@ -107,6 +107,7 @@ class HomeScreen extends StatelessWidget {
                     stretchModes: const [StretchMode.blurBackground],
                     centerTitle: true,
                     title: TextformsField(
+                      controller: context.read<HomeNotifier>().searchCntrl,
                       title: "Search",
                       icon1: Padding(
                         padding: const EdgeInsets.only(right: 28.0),

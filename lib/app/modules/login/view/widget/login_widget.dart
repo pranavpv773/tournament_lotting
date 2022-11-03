@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/modules/get_start/view/get_start.dart';
-import 'package:git_app/app/modules/home/view/home_screen.dart';
-import 'package:git_app/app/modules/home/view_model/home_provider.dart';
-import 'package:git_app/routes/routes.dart';
+import 'package:git_app/app/modules/login/view_model/login_notifier.dart';
+import 'package:git_app/app/modules/signUp/view_model/db_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'textform_widget.dart';
@@ -15,16 +14,19 @@ class LoginFormWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: context.read<LoginNotifier>().loginKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          const TextformsField(
+          TextformsField(
+            controller: context.read<LoginNotifier>().userName,
             title: "Username",
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
           ),
-          const TextformsField(
+          TextformsField(
+            controller: context.read<LoginNotifier>().password,
             title: "Password",
-            icon: Icon(Icons.lock),
+            icon: const Icon(Icons.lock),
           ),
           Padding(
             padding: const EdgeInsets.all(24.0),
@@ -32,10 +34,13 @@ class LoginFormWidget extends StatelessWidget {
               horizontal: 40,
               vertical: 10,
               fn: () {
-                context.read<HomeNotifier>().fetchStaredRepo();
-                Routes.nextScreen(
-                  screen: const HomeScreen(),
-                );
+                context.read<DbFuctions>().getLogin(
+                    context.read<LoginNotifier>().userName.text,
+                    context.read<LoginNotifier>().password.text);
+                // context.read<HomeNotifier>().fetchStaredRepo();
+                // Routes.nextScreen(
+                //   screen: const HomeScreen(),
+                // );
               },
               title: 'Sign In',
             ),
