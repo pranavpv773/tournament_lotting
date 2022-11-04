@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/modules/get_start/view/get_start.dart';
 import 'package:git_app/app/modules/login/view_model/login_notifier.dart';
+import 'package:git_app/app/modules/signUp/view/signup_screen.dart';
+import 'package:git_app/routes/routes.dart';
 import 'package:provider/provider.dart';
 
 import 'textform_widget.dart';
@@ -38,6 +40,20 @@ class LoginFormWidget extends StatelessWidget {
               title: 'Sign In',
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text("New to our Platform?"),
+              TextButton(
+                  onPressed: () {
+                    Routes.nextScreen(
+                      screen: const SignUpScreen(),
+                    );
+                    context.read<LoginNotifier>().disposeCntrl();
+                  },
+                  child: const Text("Sign Up"))
+            ],
+          )
         ],
       ),
     );

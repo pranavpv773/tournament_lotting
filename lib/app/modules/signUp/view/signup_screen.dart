@@ -113,8 +113,11 @@ class SignUpScreen extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: <Widget>[
                                     Checkbox(
-                                      value: false,
-                                      onChanged: (value) {},
+                                      value:
+                                          context.watch<UserNotifier>().checked,
+                                      onChanged: (value) {
+                                        context.read<UserNotifier>().checkBox();
+                                      },
                                     ),
                                     const Text(
                                       'Accept our terms and conditions ',

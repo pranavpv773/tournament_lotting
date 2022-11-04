@@ -3,8 +3,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:git_app/app/app_styles/app_colors.dart';
+import 'package:git_app/app/modules/home/view/home_screen.dart';
+import 'package:git_app/app/modules/home/view_model/home_provider.dart';
+import 'package:git_app/app/modules/login/view_model/login_notifier.dart';
 import 'package:git_app/app/modules/signUp/model/user_model.dart';
 import 'package:git_app/app/modules/signUp/view_model/db_provider.dart';
+import 'package:git_app/routes/routes.dart';
 import 'package:provider/provider.dart';
 
 class UserNotifier with ChangeNotifier {
@@ -14,29 +19,87 @@ class UserNotifier with ChangeNotifier {
   final emailCtrl = TextEditingController();
   final passwordCtrl = TextEditingController();
   final phonectrl = TextEditingController();
+  bool checked = false;
   signUpFn(BuildContext context) async {
     log("fn");
-    log(emailCtrl.text);
-    log(firstNameCtrl.text);
-    log(lastNameCtrl.text);
-    log(passwordCtrl.text);
-    log(phonectrl.text);
+
     if (signupKey.currentState!.validate()) {
       log("signup");
+      if (passwordCtrl.text.length < 6) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(' Password is less than six'),
+          ),
+        );
+      } else if (checked == false) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Please accept terms and conditions'),
+          ),
+        );
+      } else {
+        User user = User(
+          email: emailCtrl.text,
+          firstName: firstNameCtrl.text,
+          lastName: lastNameCtrl.text,
+          password: passwordCtrl.text,
+          phone: int.parse(passwordCtrl.text),
+        );
+        await context
+            .read<DbFuctions>()
+            .addUser(user)
+            .then((value) => getData(context));
+      }
+    }
+  }
 
-      User user = User(
-        email: emailCtrl.text,
-        firstName: firstNameCtrl.text,
-        lastName: lastNameCtrl.text,
-        password: passwordCtrl.text,
-        phone: int.parse(passwordCtrl.text),
+  Future<void> getData(BuildContext context) async {
+    log("Reached get data");
+    var dbClient = DbFuctions.db;
+    var res = await dbClient.rawQuery(
+        "SELECT * FROM UserDb WHERE firstName = '${firstNameCtrl.text}' and password = '${passwordCtrl.text}'");
+
+    if (res.isNotEmpty) {
+      for (var map in res) {
+        final user = User.fromMap(map);
+        context.read<LoginNotifier>().userData.add(user);
+      }
+      context.read<HomeNotifier>().fetchStaredRepo();
+      Routes.removeScreenUntil(
+        screen: const HomeScreen(),
       );
-      await context.read<DbFuctions>().addUser(user);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Success'),
+        SnackBar(
+          backgroundColor: AppColors.primary1,
+          content: const Text('Sign Up Success'),
         ),
       );
+      disposeCntrl();
+    } else {
+      log("error");
+
+      disposeCntrl();
     }
+  }
+
+  bool checkBox() {
+    if (checked == true) {
+      checked = false;
+      notifyListeners();
+    } else {
+      checked = true;
+      notifyListeners();
+    }
+    notifyListeners();
+    return checked;
+  }
+
+  void disposeCntrl() {
+    firstNameCtrl.clear();
+    lastNameCtrl.clear();
+    emailCtrl.clear();
+    passwordCtrl.clear();
+    phonectrl.clear();
+    checked = false;
   }
 }
