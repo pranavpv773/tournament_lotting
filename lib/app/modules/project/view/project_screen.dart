@@ -93,12 +93,14 @@ Widget bottomDetailsSheet(int index1) {
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
                 subtitle: Text(
-                  context
-                      .read<HomeNotifier>()
-                      .itemList[index1]
-                      .name
-                      .toString()
-                      .toUpperCase(),
+                  context.read<HomeNotifier>().itemList[index1].name != null
+                      ? context
+                          .read<HomeNotifier>()
+                          .itemList[index1]
+                          .name
+                          .toString()
+                          .toUpperCase()
+                      : "No Name",
                   style: AppTextStyles.h3
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
@@ -110,11 +112,14 @@ Widget bottomDetailsSheet(int index1) {
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
                 subtitle: Text(
-                  context
-                      .read<HomeNotifier>()
-                      .itemList[index1]
-                      .description
-                      .toString(),
+                  context.read<HomeNotifier>().itemList[index1].description !=
+                          null
+                      ? context
+                          .read<HomeNotifier>()
+                          .itemList[index1]
+                          .description
+                          .toString()
+                      : "No Description",
                   style: AppTextStyles.h2.copyWith(
                     color: AppColors.kGrey,
                     fontWeight: FontWeight.bold,
@@ -131,7 +136,13 @@ Widget bottomDetailsSheet(int index1) {
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
                 subtitle: Text(
-                  context.read<HomeNotifier>().itemList[index1].fork.toString(),
+                  context.read<HomeNotifier>().itemList[index1].fork != null
+                      ? context
+                          .read<HomeNotifier>()
+                          .itemList[index1]
+                          .fork
+                          .toString()
+                      : "No forks",
                   style: AppTextStyles.h2.copyWith(
                     color: AppColors.kGrey,
                     fontWeight: FontWeight.bold,
@@ -145,11 +156,14 @@ Widget bottomDetailsSheet(int index1) {
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
                 subtitle: Text(
-                  context
-                      .read<HomeNotifier>()
-                      .itemList[index1]
-                      .watchersCount
-                      .toString(),
+                  context.read<HomeNotifier>().itemList[index1].watchersCount !=
+                          null
+                      ? context
+                          .read<HomeNotifier>()
+                          .itemList[index1]
+                          .watchersCount
+                          .toString()
+                      : "No watchers",
                   style: AppTextStyles.h2.copyWith(
                     color: AppColors.kGrey,
                     fontWeight: FontWeight.bold,
@@ -163,12 +177,15 @@ Widget bottomDetailsSheet(int index1) {
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
                 subtitle: Text(
-                  DateFormat('dd-MM-yyyy')
-                      .format(context
-                          .read<HomeNotifier>()
-                          .itemList[index1]
-                          .createdAt!)
-                      .toString(),
+                  context.read<HomeNotifier>().itemList[index1].createdAt !=
+                          null
+                      ? DateFormat('dd-MM-yyyy')
+                          .format(context
+                              .read<HomeNotifier>()
+                              .itemList[index1]
+                              .createdAt!)
+                          .toString()
+                      : "No Date ",
                   style: AppTextStyles.h2.copyWith(
                     color: AppColors.kGrey,
                     fontWeight: FontWeight.bold,
@@ -183,10 +200,16 @@ Widget bottomDetailsSheet(int index1) {
                 ),
                 subtitle: Text(
                   context
-                      .read<HomeNotifier>()
-                      .itemList[index1]
-                      .homepage
-                      .toString(),
+                          .read<HomeNotifier>()
+                          .itemList[index1]
+                          .homepage!
+                          .isNotEmpty
+                      ? context
+                          .read<HomeNotifier>()
+                          .itemList[index1]
+                          .homepage
+                          .toString()
+                      : "No Homepage url",
                   style: AppTextStyles.h2.copyWith(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
@@ -200,11 +223,14 @@ Widget bottomDetailsSheet(int index1) {
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
                 subtitle: Text(
-                  context
-                      .read<HomeNotifier>()
-                      .itemList[index1]
-                      .hasIssues
-                      .toString(),
+                  context.read<HomeNotifier>().itemList[index1].hasIssues !=
+                          null
+                      ? context
+                          .read<HomeNotifier>()
+                          .itemList[index1]
+                          .hasIssues
+                          .toString()
+                      : "No issues",
                   style: AppTextStyles.h2.copyWith(
                     color: Colors.blue,
                     fontWeight: FontWeight.bold,
