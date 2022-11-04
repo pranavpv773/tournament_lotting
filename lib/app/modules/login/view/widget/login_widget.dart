@@ -27,7 +27,16 @@ class LoginFormWidget extends StatelessWidget {
           TextformsField(
             controller: context.read<LoginNotifier>().password,
             title: "Password",
-            icon: const Icon(Icons.lock),
+            obsecure: context.watch<LoginNotifier>().obsecure,
+            icon1: IconButton(
+              icon: context.watch<LoginNotifier>().obsecure
+                  ? const Icon(Icons.remove_red_eye_outlined)
+                  : const Icon(Icons.password),
+              onPressed: () {
+                context.read<LoginNotifier>().obSecureFn();
+              },
+            ),
+            icon: const Icon(Icons.lock_outline),
           ),
           Padding(
             padding: const EdgeInsets.all(24.0),
@@ -45,13 +54,16 @@ class LoginFormWidget extends StatelessWidget {
             children: [
               const Text("New to our Platform?"),
               TextButton(
-                  onPressed: () {
-                    Routes.nextScreen(
-                      screen: const SignUpScreen(),
-                    );
-                    context.read<LoginNotifier>().disposeCntrl();
-                  },
-                  child: const Text("Sign Up"))
+                onPressed: () {
+                  Routes.nextScreen(
+                    screen: const SignUpScreen(),
+                  );
+                  context.read<LoginNotifier>().disposeCntrl();
+                },
+                child: const Text(
+                  "Sign Up",
+                ),
+              )
             ],
           )
         ],

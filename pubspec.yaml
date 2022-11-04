@@ -43,6 +43,7 @@ dependencies:
   shimmer: ^2.0.0
   sqflite: ^2.0.3+1
   path_provider:
+  animate_do: ^2.1.0
 
 dev_dependencies:
   flutter_test:

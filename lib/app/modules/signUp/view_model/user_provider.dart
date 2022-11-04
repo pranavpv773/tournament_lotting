@@ -20,6 +20,7 @@ class UserNotifier with ChangeNotifier {
   final passwordCtrl = TextEditingController();
   final phonectrl = TextEditingController();
   bool checked = false;
+  bool obsecure = true;
   signUpFn(BuildContext context) async {
     log("fn");
 
@@ -37,13 +38,19 @@ class UserNotifier with ChangeNotifier {
             content: Text('Please accept terms and conditions'),
           ),
         );
+      } else if (isValidEmail(emailCtrl.text) == false) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Email Format is incorrect'),
+          ),
+        );
       } else {
         User user = User(
-          email: emailCtrl.text,
-          firstName: firstNameCtrl.text,
-          lastName: lastNameCtrl.text,
-          password: passwordCtrl.text,
-          phone: int.parse(passwordCtrl.text),
+          email: emailCtrl.text.trim().toLowerCase(),
+          firstName: firstNameCtrl.text.trim().toLowerCase(),
+          lastName: lastNameCtrl.text.trim().toLowerCase(),
+          password: passwordCtrl.text.trim().toLowerCase(),
+          phone: int.parse(passwordCtrl.text.trim()),
         );
         await context
             .read<DbFuctions>()
@@ -94,6 +101,18 @@ class UserNotifier with ChangeNotifier {
     return checked;
   }
 
+  bool obSecureFn() {
+    if (obsecure == true) {
+      obsecure = false;
+      notifyListeners();
+    } else {
+      obsecure = true;
+      notifyListeners();
+    }
+    notifyListeners();
+    return obsecure;
+  }
+
   void disposeCntrl() {
     firstNameCtrl.clear();
     lastNameCtrl.clear();
@@ -101,5 +120,11 @@ class UserNotifier with ChangeNotifier {
     passwordCtrl.clear();
     phonectrl.clear();
     checked = false;
+  }
+
+  bool isValidEmail(String input) {
+    return RegExp(
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(input);
   }
 }

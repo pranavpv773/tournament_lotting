@@ -14,6 +14,7 @@ class LoginNotifier with ChangeNotifier {
   final password = TextEditingController();
   final loginKey = GlobalKey<FormState>();
   final List<User> userData = [];
+  bool obsecure = true;
   Future<void> getLogin(BuildContext context) async {
     if (loginKey.currentState!.validate()) {
       if (password.text.length < 6) {
@@ -26,7 +27,7 @@ class LoginNotifier with ChangeNotifier {
         notifyListeners();
         var dbClient = DbFuctions.db;
         var res = await dbClient.rawQuery(
-            "SELECT * FROM UserDb WHERE firstName = '${userName.text}' and password = '${password.text}'");
+            "SELECT * FROM UserDb WHERE firstName = '${userName.text.trim().toLowerCase()}' and password = '${password.text.trim().toLowerCase()}'");
 
         if (res.isNotEmpty) {
           for (var map in res) {
@@ -46,6 +47,18 @@ class LoginNotifier with ChangeNotifier {
         }
       }
     }
+  }
+
+  bool obSecureFn() {
+    if (obsecure == true) {
+      obsecure = false;
+      notifyListeners();
+    } else {
+      obsecure = true;
+      notifyListeners();
+    }
+    notifyListeners();
+    return obsecure;
   }
 
   void disposeCntrl() {

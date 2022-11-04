@@ -10,10 +10,12 @@ class TextformsField extends StatelessWidget {
     this.icon,
     required this.controller,
     this.icon1,
+    this.obsecure,
   }) : super(key: key);
   final String title;
   final Widget? icon;
   final Widget? icon1;
+  final bool? obsecure;
   final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class TextformsField extends StatelessWidget {
         controller: controller,
         keyboardType: TextInputType.emailAddress,
         style: AppTextStyles.formField,
+        obscureText: obsecure ?? false,
         validator: (value) {
           if (value!.isEmpty) {
             return " Please fill this field";

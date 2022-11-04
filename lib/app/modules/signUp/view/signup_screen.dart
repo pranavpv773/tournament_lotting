@@ -107,7 +107,18 @@ class SignUpScreen extends StatelessWidget {
                                   controller:
                                       context.read<UserNotifier>().passwordCtrl,
                                   title: "Password",
-                                  icon1: const Icon(Icons.lock_outline),
+                                  obsecure:
+                                      context.watch<UserNotifier>().obsecure,
+                                  icon1: IconButton(
+                                    icon: context.watch<UserNotifier>().obsecure
+                                        ? const Icon(
+                                            Icons.remove_red_eye_outlined)
+                                        : const Icon(Icons.password),
+                                    onPressed: () {
+                                      context.read<UserNotifier>().obSecureFn();
+                                    },
+                                  ),
+                                  icon: const Icon(Icons.lock_outline),
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.start,

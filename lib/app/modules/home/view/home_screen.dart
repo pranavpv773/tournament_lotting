@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
+import 'package:git_app/app/app_styles/app_text_styles.dart';
 import 'package:git_app/app/modules/home/view/widgets/builder_widget.dart';
 import 'package:git_app/app/modules/home/view/widgets/shimmer.dart';
 import 'package:git_app/app/modules/home/view_model/home_provider.dart';
@@ -16,8 +17,10 @@ class HomeScreen extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return SafeArea(
-      child: Scaffold(
-        body: NestedScrollView(
+        child: Scaffold(
+      body: WillPopScope(
+        onWillPop: context.watch<HomeNotifier>().onWillPop,
+        child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
@@ -41,29 +44,28 @@ class HomeScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.menu,
-                                color: AppColors.kBlack,
+                                color: Colors.indigo,
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: height / 60,
                               ),
                               Text(
-                                "Hello ${context.read<LoginNotifier>().userData[0].firstName}",
+                                "Hello ${context.read<LoginNotifier>().userData[0].firstName.toUpperCase()}",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: AppColors.kBlack,
+                                  color: AppColors.kGrey,
                                 ),
                               ),
-                              const SizedBox(
-                                height: 20,
+                              SizedBox(
+                                height: height / 60,
                               ),
                               Text(
-                                textAlign: TextAlign.start,
-                                "Find the most stared repo\n and start code today.",
-                                style: TextStyle(
-                                    fontSize: 18, color: AppColors.kBlack),
-                              ),
+                                  textAlign: TextAlign.start,
+                                  "Find the most stared repo\n and start code today.",
+                                  style: AppTextStyles.h3.copyWith(
+                                      color: AppColors.kBlack, fontSize: 20)),
                             ],
                           ),
                           Container(
@@ -83,17 +85,22 @@ class HomeScreen extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: const [
+                              children: [
                                 // Icon(
                                 //   Icons.align_vertical_center,
                                 //   color: AppColors.kBlack,
                                 // ),
-                                CircleAvatar(
+                                const CircleAvatar(
                                   backgroundImage: NetworkImage(
                                       "https://mir-s3-cdn-cf.behance.net/projects/404/a17ff4145226633.Y3JvcCwxMTUwLDkwMCwxMjUsMA.png"),
                                   radius: 20,
                                 ),
-                                Icon(Icons.notifications),
+                                CircleAvatar(
+                                  backgroundColor: AppColors.primary,
+                                  child: const Icon(
+                                    Icons.notifications_none_outlined,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -128,6 +135,6 @@ class HomeScreen extends StatelessWidget {
               : CardbuilderWidget(height: height, width: width),
         ),
       ),
-    );
+    ));
   }
 }

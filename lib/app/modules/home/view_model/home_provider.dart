@@ -10,6 +10,7 @@ import 'package:git_app/app/modules/home/model/repo_model.dart';
 class HomeNotifier with ChangeNotifier {
   final searchCntrl = TextEditingController();
   List<Item> itemList = [];
+  DateTime? currentBackPressTime;
   fetchStaredRepo() async {
     RepoModel? resp = await StaredApiService().fetchStaredRepo();
 
@@ -23,5 +24,17 @@ class HomeNotifier with ChangeNotifier {
         toastLength: Toast.LENGTH_LONG,
       );
     }
+  }
+
+  Future<bool> onWillPop() {
+    DateTime now = DateTime.now();
+    if (currentBackPressTime == null ||
+        now.difference(currentBackPressTime!) > const Duration(seconds: 2)) {
+      currentBackPressTime = now;
+      Fluttertoast.showToast(
+          msg: "Double Tab to Exit", toastLength: Toast.LENGTH_LONG);
+      return Future.value(false);
+    }
+    return Future.value(true);
   }
 }

@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_images.dart';
 import 'package:git_app/app/modules/splash/view_model/splash_provider.dart';
@@ -20,9 +21,11 @@ class SplashScreen extends StatelessWidget {
         width: width,
         height: height,
         child: Center(
-            child: Image.asset(
-          AppImages.logo,
-          width: 80,
+            child: FadeInUpBig(
+          child: Image.asset(
+            AppImages.logo,
+            width: 80,
+          ),
         )),
       ),
     );
