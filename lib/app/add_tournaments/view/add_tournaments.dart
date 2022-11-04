@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view/widgets/terxtformwidget.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
 import 'package:tournament_lotter/app/app_style/app_style.dart';
+import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/groups/view/group_screen.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 
@@ -49,7 +50,28 @@ class AddTournamentScreen extends StatelessWidget {
                 },
               ),
             ),
-            const Text('AVAILABLE GROUPS'),
+            Container(
+              height: 50,
+              //  color: kPrimary,
+              decoration: BoxDecoration(
+                border: Border.all(color: kPrimary),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    kWhite,
+                    kPrimary,
+                  ],
+                ),
+              ),
+              width: double.infinity,
+              child: Center(
+                child: Text(
+                  'AVAILABLE GROUPS',
+                  style: AppStyle.h1.copyWith(color: kWhite, fontSize: 20),
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: GridView.builder(
@@ -81,7 +103,7 @@ class AddTournamentScreen extends StatelessWidget {
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    Colors.amber,
+                    kPrimary,
                   ),
                 ),
                 onPressed: () {
@@ -118,11 +140,24 @@ class AvailableGroupContainer extends StatelessWidget {
     return Container(
       width: 100,
       height: 100,
-      color: Colors.amber,
+      decoration: BoxDecoration(
+        border: Border.all(color: kOrange.withOpacity(0.5)),
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          colors: [
+            kWhite,
+            kOrange,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(
+          10,
+        ),
+      ),
       child: Center(
         child: Text(
           context.read<AddTournamentProvider>().groupList[index].toString(),
-          style: AppStyle.h1,
+          style: AppStyle.h1.copyWith(color: kWhite),
         ),
       ),
     );

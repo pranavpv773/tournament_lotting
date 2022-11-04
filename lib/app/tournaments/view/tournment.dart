@@ -8,43 +8,46 @@ class TournamentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            title: const Text("Select Tournament"),
-          ),
-          body: GestureDetector(
-            onTap: () {},
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-              child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(),
-                child: Column(
-                  children: const [
-                    CardWidget(
-                      image:
-                          'https://www.nicepng.com/png/detail/257-2570111_cricket-equipment-gear-cricket-png.png',
-                      sports: 'Cricket',
-                      count: 5,
-                      avathar: 'avathar1',
-                    ),
-                    CardWidget(
-                      image:
-                          'https://m.media-amazon.com/images/I/71ufAwE1xnL._SL1500_.jpg',
-                      sports: 'Carroms',
-                      count: 5,
-                      avathar: 'avathar2',
-                    ),
-                    CardWidget(
-                      image:
-                          'https://img.freepik.com/premium-vector/soccer-football-logo-vector_7888-111.jpg?w=2000',
-                      sports: 'Football',
-                      count: 5,
-                      avathar: 'avathar3',
-                    ),
-                  ],
-                ),
+        appBar: AppBar(
+          title: const Text("Select Tournament"),
+        ),
+        body: GestureDetector(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15.0,
+            ),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                children: const [
+                  CardWidget(
+                    image:
+                        'https://www.nicepng.com/png/detail/257-2570111_cricket-equipment-gear-cricket-png.png',
+                    sports: 'Cricket',
+                    count: 5,
+                    avathar: 'avathar1',
+                  ),
+                  CardWidget(
+                    image:
+                        'https://m.media-amazon.com/images/I/71ufAwE1xnL._SL1500_.jpg',
+                    sports: 'Carroms',
+                    count: 5,
+                    avathar: 'avathar2',
+                  ),
+                  CardWidget(
+                    image:
+                        'https://img.freepik.com/premium-vector/soccer-football-logo-vector_7888-111.jpg?w=2000',
+                    sports: 'Football',
+                    count: 5,
+                    avathar: 'avathar3',
+                  ),
+                ],
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -83,7 +86,7 @@ class CardWidget extends StatelessWidget {
                     height: constraints.maxHeight * 0.8,
                     width: constraints.maxWidth,
                     decoration: BoxDecoration(
-                      color: kPrimary,
+                      color: k1Primary,
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(70),
                         topRight: Radius.circular(50),
@@ -108,8 +111,8 @@ class CardWidget extends StatelessWidget {
               ),
               Positioned(
                 right: 0,
-                bottom: 100,
-                left: 0,
+                bottom: 50,
+                left: 90,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [

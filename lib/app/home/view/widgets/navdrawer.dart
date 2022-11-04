@@ -13,7 +13,8 @@ class NavDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      color: kPrimary,
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width / 1.8,
       child: Drawer(
@@ -24,10 +25,10 @@ class NavDrawer extends StatelessWidget {
               children: <Widget>[
                 DrawerHeader(
                     decoration: BoxDecoration(
-                      color: kPrimary,
+                      color: kOrange,
                       image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage('assets/carroms/tournament_logo.png'),
+                        fit: BoxFit.contain,
+                        image: AssetImage('assets/boy.png'),
                       ),
                     ),
                     child: Row(
@@ -41,57 +42,88 @@ class NavDrawer extends StatelessWidget {
                       ],
                     )),
                 ListTile(
+                  iconColor: kWhite,
+                  tileColor: kPrimary,
                   leading: const Icon(
                     Icons.maps_home_work,
                   ),
-                  title: const Text(
+                  title: Text(
                     'Home',
+                    style: TextStyle(
+                      color: kWhite,
+                    ),
                   ),
                   onTap: () {
                     RoutesProvider.backScreen();
                   },
                 ),
-                ListTile(
-                  leading: const Icon(Icons.sports_score_outlined),
-                  title: const Text(
-                    'Add Tournaments',
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    iconColor: kWhite,
+                    tileColor: kOrange,
+                    leading: const Icon(Icons.sports_score_outlined),
+                    title: Text(
+                      'Add Tournaments',
+                      style: TextStyle(
+                        color: kWhite,
+                      ),
+                    ),
+                    onTap: () {
+                      RoutesProvider.backScreen();
+                      RoutesProvider.nextScreen(
+                          screen: const SelectTournamentScreen());
+                    },
                   ),
-                  onTap: () {
-                    RoutesProvider.backScreen();
-                    RoutesProvider.nextScreen(
-                        screen: const SelectTournamentScreen());
-                  },
                 ),
                 ListTile(
+                  iconColor: kWhite,
+                  tileColor: kPrimary,
                   leading: const Icon(
                     Icons.swap_horizontal_circle_sharp,
                   ),
-                  title: const Text(
+                  title: Text(
                     'Tournaments',
+                    style: TextStyle(
+                      color: kWhite,
+                    ),
                   ),
                   onTap: () {
                     RoutesProvider.backScreen();
                     RoutesProvider.nextScreen(screen: const TournamentScreen());
                   },
                 ),
-                ListTile(
-                  leading: const Icon(
-                    Icons.settings,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListTile(
+                    tileColor: kOrange,
+                    iconColor: kWhite,
+                    leading: const Icon(
+                      Icons.settings,
+                    ),
+                    title: Text(
+                      'Settings',
+                      style: TextStyle(
+                        color: kWhite,
+                      ),
+                    ),
+                    onTap: () {
+                      RoutesProvider.backScreen();
+                      RoutesProvider.nextScreen(screen: const SettingsScreen());
+                    },
                   ),
-                  title: const Text(
-                    'Settings',
-                  ),
-                  onTap: () {
-                    RoutesProvider.backScreen();
-                    RoutesProvider.nextScreen(screen: const SettingsScreen());
-                  },
                 ),
                 ListTile(
+                  iconColor: kWhite,
+                  tileColor: kPrimary,
                   leading: const Icon(
                     Icons.logout,
                   ),
-                  title: const Text(
+                  title: Text(
                     'Logout',
+                    style: TextStyle(
+                      color: kWhite,
+                    ),
                   ),
                   onTap: () => context.read<LoginProvider>().logOut(context),
                 ),

@@ -19,7 +19,6 @@ class AddTournamentProvider with ChangeNotifier {
   int? count;
 
   createGroup(int limit) {
-    // print(limit);
     for (int i = 2; i < limit; i++) {
       if (limit % i == 0 && i != limit / 2) {
         print(i);

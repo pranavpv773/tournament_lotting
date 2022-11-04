@@ -14,7 +14,7 @@ class SelectTournamentScreen extends StatelessWidget {
     final kHeight = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: kGrey,
+        backgroundColor: kPrimary.withOpacity(0.6),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -117,8 +117,10 @@ class SelectTournamentScreen extends StatelessWidget {
                         Center(
                           child: ElevatedButton(
                             style: ButtonStyle(
-                                backgroundColor:
-                                    MaterialStateProperty.all(Colors.amber)),
+                              backgroundColor: MaterialStateProperty.all(
+                                Colors.amber,
+                              ),
+                            ),
                             onPressed: () {
                               RoutesProvider.removeScreen(
                                   screen: AddTournamentScreen(
@@ -127,8 +129,9 @@ class SelectTournamentScreen extends StatelessWidget {
                               ));
                             },
                             child: Padding(
-                              padding:
-                                  EdgeInsets.symmetric(horizontal: kWidth / 5),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: kWidth / 5,
+                              ),
                               child: const Text("OK"),
                             ),
                           ),

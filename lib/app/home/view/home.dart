@@ -10,10 +10,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: kWhite,
+      // backgroundColor: kOrange,
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false,
       appBar: AppBar(
+        elevation: 0,
         backgroundColor: kPrimary,
         centerTitle: true,
         title: TextButton(
@@ -37,12 +38,8 @@ class HomeScreen extends StatelessWidget {
         ),
         iconTheme: IconThemeData(color: kWhite),
         leading: IconButton(
-          icon: CircleAvatar(
-            backgroundColor: kWhite,
-            radius: 110,
-            backgroundImage: const AssetImage(
-              'assets/trophy.gif',
-            ),
+          icon: Image.asset(
+            "assets/trophy_lottie.png",
           ),
           onPressed: () => _scaffoldKey.currentState?.openDrawer(),
         ),
@@ -54,7 +51,7 @@ class HomeScreen extends StatelessWidget {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/football/empty1.gif',
+              'assets/football/loti_football.png',
             ),
           ),
         ),
