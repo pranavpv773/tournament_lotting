@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
@@ -16,6 +18,16 @@ class AddTournamentProvider with ChangeNotifier {
   List<String> teamsA = [];
   List<String> teamsB = [];
   List<int> groupList = [];
+  List<String> one = [];
+  List<String> two = [];
+  List<String> three = [];
+  List<String> four = [];
+  List<String> five = [];
+  List<String> six = [];
+  List<String> seven = [];
+  List<String> eight = [];
+  List<String> nine = [];
+  List<String> ten = [];
   int? count;
 
   createGroup(int limit) {
@@ -27,29 +39,21 @@ class AddTournamentProvider with ChangeNotifier {
     }
   }
 
-  void createTeams(int limit, BuildContext context) async {
+  void createTeams(int limit, BuildContext context, int available) async {
     if (addTournamentKey.currentState!.validate()) {
       for (int i = 0; i < limit; i++) {
         teams.add(controllers[i].text);
-        // controllers[i].clear();
+        log(teams.toString());
       }
 
-      await createMatches(context);
-    } else {
-      teams.clear();
-      teamsA.clear();
-      teamsB.clear();
-      // print(teams);
-    }
+      await createMatches(context, available);
+    } else {}
   }
 
-  createMatches(BuildContext context) async {
+  createMatches(BuildContext context, int available) async {
     teams.shuffle();
-    double limit = teams.length / 2;
-    teamsA.addAll(teams.sublist(0, limit.toInt()));
-    // print(teamsA);
-    teamsB.addAll(teams.sublist(limit.toInt()));
-    // print(teamsB);
+    double limit = teams.length / available;
+    groupListMaking(limit);
   }
 
   createController(int limit) {
@@ -116,5 +120,57 @@ class AddTournamentProvider with ChangeNotifier {
       animationType: DialogTransitionType.size,
       curve: Curves.linear,
     );
+  }
+
+  void groupListMaking(value) {
+    radioValue = value;
+    switch (value) {
+      case 2:
+        one;
+        two;
+
+        break;
+      case 3:
+        one;
+        two;
+        break;
+      case 4:
+        one;
+        two;
+        three;
+        four;
+        break;
+      case 5:
+        one;
+        two;
+        three;
+        four;
+        five;
+        break;
+      case 6:
+        choice = "Football";
+        color = Colors.greenAccent;
+        break;
+      case 7:
+        choice = "Football";
+        color = Colors.greenAccent;
+        break;
+      case 8:
+        choice = "Football";
+        color = Colors.greenAccent;
+        break;
+      case 9:
+        choice = "Football";
+        color = Colors.greenAccent;
+        break;
+      case 10:
+        choice = "Football";
+        color = Colors.greenAccent;
+        break;
+      default:
+        choice = null;
+    }
+    // print(choice);
+    notifyListeners();
   }
 }

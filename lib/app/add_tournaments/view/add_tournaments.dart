@@ -26,6 +26,7 @@ class AddTournamentScreen extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const ScrollPhysics(),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Form(
               key: context.read<AddTournamentProvider>().addTournamentKey,
