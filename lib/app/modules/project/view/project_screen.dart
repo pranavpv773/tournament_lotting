@@ -199,11 +199,13 @@ Widget bottomDetailsSheet(int index1) {
                       .copyWith(color: AppColors.kBlack, letterSpacing: 1),
                 ),
                 subtitle: Text(
-                  context
-                          .read<HomeNotifier>()
-                          .itemList[index1]
-                          .homepage!
-                          .isNotEmpty
+                  context.read<HomeNotifier>().itemList[index1].homepage !=
+                              null &&
+                          context
+                              .read<HomeNotifier>()
+                              .itemList[index1]
+                              .homepage!
+                              .isNotEmpty
                       ? context
                           .read<HomeNotifier>()
                           .itemList[index1]
@@ -265,7 +267,8 @@ class ExpansionTileWidget extends StatelessWidget {
           ),
         ),
         children: [
-          context.read<HomeNotifier>().itemList[index1].topics!.isEmpty
+          context.read<HomeNotifier>().itemList[index1].topics!.isEmpty ||
+                  context.read<HomeNotifier>().itemList[index1].topics == null
               ? Text(
                   "No topics",
                   style: AppTextStyles.h3,

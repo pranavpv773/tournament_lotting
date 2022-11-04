@@ -11,12 +11,14 @@ class TextformsField extends StatelessWidget {
     required this.controller,
     this.icon1,
     this.obsecure,
+    this.textype,
   }) : super(key: key);
   final String title;
   final Widget? icon;
   final Widget? icon1;
   final bool? obsecure;
   final TextEditingController controller;
+  final TextInputType? textype;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -30,7 +32,7 @@ class TextformsField extends StatelessWidget {
       ),
       child: TextFormField(
         controller: controller,
-        keyboardType: TextInputType.emailAddress,
+        keyboardType: textype ?? TextInputType.name,
         style: AppTextStyles.formField,
         obscureText: obsecure ?? false,
         validator: (value) {

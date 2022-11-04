@@ -92,12 +92,14 @@ class SignUpScreen extends StatelessWidget {
                                   ],
                                 ),
                                 TextformsField(
+                                  textype: TextInputType.emailAddress,
                                   controller:
                                       context.read<UserNotifier>().emailCtrl,
                                   title: "Email",
                                   icon1: const Icon(Icons.email_outlined),
                                 ),
                                 TextformsField(
+                                  textype: TextInputType.phone,
                                   controller:
                                       context.read<UserNotifier>().phonectrl,
                                   title: "Phone",
