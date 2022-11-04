@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
         navigatorKey: RoutesProvider.navigatorKey,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: kPrimary),
           primarySwatch: Colors.red,
           scaffoldBackgroundColor: kWhite,
         ),

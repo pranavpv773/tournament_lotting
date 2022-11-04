@@ -22,8 +22,8 @@ class TextformWidget extends StatelessWidget {
           }
         },
         controller: controller,
-        style: TextStyle(
-          color: kGrey,
+        style: const TextStyle(
+          color: Colors.black,
           fontSize: 18,
         ),
         decoration: InputDecoration(
@@ -33,7 +33,7 @@ class TextformWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Icon(
               Icons.group_add,
-              color: kPrimary,
+              color: kOrange,
             ),
           ),
           enabledBorder: OutlineInputBorder(

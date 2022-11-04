@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
 import 'package:tournament_lotter/app/app_style/app_style.dart';
+import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/groups/view_model/group_provider.dart';
 
 class GroupScreen extends StatelessWidget {
@@ -18,13 +19,14 @@ class GroupScreen extends StatelessWidget {
         child: Container(
           height: double.infinity,
           width: double.infinity,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: NetworkImage(
-                'http://sturdavinci.com/wp-content/uploads/edd/2015/05/Stadium-1-Layers.jpg',
-              ),
-              fit: BoxFit.cover,
-            ),
+          decoration: BoxDecoration(
+            color: kWhite,
+            // image: DecorationImage(
+            //   image: NetworkImage(
+            //     'http://sturdavinci.com/wp-content/uploads/edd/2015/05/Stadium-1-Layers.jpg',
+            //   ),
+            //   fit: BoxFit.cover,
+            // ),
           ),
           child: GridView.builder(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -62,21 +64,26 @@ class CardBuilder extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          color: const Color.fromARGB(138, 255, 255, 255),
+          color: kPrimary.withOpacity(0.7),
           borderRadius: BorderRadius.circular(15),
         ),
-        child: Column(
-          children: [
-            Text(
-              'Group ${context.read<GroupProvider>().alphabets[index]}',
-              style: AppStyle.h2.copyWith(color: Colors.indigo),
-            ),
-            Container(
-              width: 100,
-              height: 100,
-              decoration: const BoxDecoration(),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Text(
+                'Group ${context.read<GroupProvider>().alphabets[index]}',
+                style: AppStyle.h2.copyWith(
+                  color: kWhite,
+                ),
+              ),
+              Container(
+                width: 100,
+                height: 100,
+                decoration: const BoxDecoration(),
+              ),
+            ],
+          ),
         ),
       ),
     );
