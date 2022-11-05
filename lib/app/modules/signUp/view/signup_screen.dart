@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_text_styles.dart';
@@ -153,8 +151,9 @@ class SignUpScreen extends StatelessWidget {
                       horizontal: 40,
                       vertical: 10,
                       fn: () {
-                        log("message");
-                        context.read<UserNotifier>().signUpFn(context);
+                        context.read<UserNotifier>().isLoad
+                            ? () {}
+                            : context.read<UserNotifier>().signUpFn(context);
                       },
                       title: 'Sign Up',
                     ),

@@ -20,10 +20,11 @@ class UserNotifier with ChangeNotifier {
   final passwordCtrl = TextEditingController();
   final phonectrl = TextEditingController();
   bool checked = false;
+  bool isLoad = false;
   bool obsecure = true;
   signUpFn(BuildContext context) async {
-    log("fn");
-
+    isLoad = true;
+    notifyListeners();
     if (signupKey.currentState!.validate()) {
       log("signup");
       if (passwordCtrl.text.length < 6) {
@@ -32,18 +33,24 @@ class UserNotifier with ChangeNotifier {
             content: Text(' Password is less than six'),
           ),
         );
+        isLoad = false;
+        notifyListeners();
       } else if (checked == false) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Please accept terms and conditions'),
           ),
         );
-      } else if (isValidEmail(emailCtrl.text) == false) {
+        isLoad = false;
+        notifyListeners();
+      } else if (isValidEmail(emailCtrl.text.trim()) == false) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Email Format is incorrect'),
           ),
         );
+        isLoad = false;
+        notifyListeners();
       } else {
         User user = User(
           email: emailCtrl.text.trim().toLowerCase(),
@@ -56,8 +63,12 @@ class UserNotifier with ChangeNotifier {
             .read<DbFuctions>()
             .addUser(user)
             .then((value) => getData(context));
+        isLoad = false;
+        notifyListeners();
       }
     }
+    isLoad = false;
+    notifyListeners();
   }
 
   Future<void> getData(BuildContext context) async {

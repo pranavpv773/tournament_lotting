@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:git_app/app/app_styles/app_colors.dart';
 import 'package:git_app/app/app_styles/app_images.dart';
@@ -5,6 +6,9 @@ import 'package:git_app/app/app_styles/app_text_styles.dart';
 import 'package:git_app/app/modules/login/view/login.dart';
 import 'package:git_app/app/modules/utils/view/container_widget.dart';
 import 'package:git_app/routes/routes.dart';
+import 'package:provider/provider.dart';
+
+import '../../signUp/view_model/user_provider.dart';
 
 class GetStartScreen extends StatelessWidget {
   const GetStartScreen({Key? key}) : super(key: key);
@@ -92,7 +96,11 @@ class ButtonWidget extends StatelessWidget {
         textStyle: AppTextStyles.buttonText,
       ),
       onPressed: fn,
-      child: Text(title),
+      child: context.watch<UserNotifier>().isLoad
+          ? CupertinoActivityIndicator(
+              color: AppColors.primary,
+            )
+          : Text(title),
     );
   }
 }
