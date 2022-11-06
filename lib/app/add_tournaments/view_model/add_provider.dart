@@ -43,9 +43,8 @@ class AddTournamentProvider with ChangeNotifier {
     if (addTournamentKey.currentState!.validate()) {
       for (int i = 0; i < limit; i++) {
         teams.add(controllers[i].text);
-        log(teams.toString());
       }
-
+      log(teams.toString());
       await createMatches(context, available);
     } else {}
   }
