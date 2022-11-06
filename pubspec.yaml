@@ -48,6 +48,7 @@ dependencies:
   shared_preferences: ^2.0.15
   google_fonts: ^3.0.1
   cached_network_image: ^3.2.1
+  iconify_flutter: ^0.0.5
 
 
 dev_dependencies:

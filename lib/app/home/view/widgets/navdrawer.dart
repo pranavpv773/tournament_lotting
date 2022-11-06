@@ -1,12 +1,12 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:tournament_lotter/app/add_tournaments/view/tournament_selectoin.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/settings/view/settings.dart';
 import 'package:tournament_lotter/app/tournaments/view/tournment.dart';
+import 'package:tournament_lotter/turf_app/turf_splash/view/splash.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -64,7 +64,7 @@ class NavDrawer extends StatelessWidget {
                     tileColor: kOrange,
                     leading: const Icon(Icons.sports_score_outlined),
                     title: Text(
-                      'Add Tournaments',
+                      'Turf Booking',
                       style: TextStyle(
                         color: kWhite,
                       ),
@@ -72,7 +72,7 @@ class NavDrawer extends StatelessWidget {
                     onTap: () {
                       RoutesProvider.backScreen();
                       RoutesProvider.nextScreen(
-                          screen: const SelectTournamentScreen());
+                          screen: const TurfSplashScreen());
                     },
                   ),
                 ),

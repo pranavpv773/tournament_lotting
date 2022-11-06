@@ -40,6 +40,7 @@ class AddTournamentProvider with ChangeNotifier {
   }
 
   void createTeams(int limit, BuildContext context, int available) async {
+    teams.clear();
     if (addTournamentKey.currentState!.validate()) {
       for (int i = 0; i < limit; i++) {
         teams.add(controllers[i].text);
@@ -51,8 +52,10 @@ class AddTournamentProvider with ChangeNotifier {
 
   createMatches(BuildContext context, int available) async {
     teams.shuffle();
-    double limit = teams.length / available;
-    groupListMaking(limit);
+    log(available.toString());
+    final limit = teams.length / available;
+    log(limit.toString());
+    groupListMaking(limit.toInt(), available);
   }
 
   createController(int limit) {
@@ -121,8 +124,7 @@ class AddTournamentProvider with ChangeNotifier {
     );
   }
 
-  void groupListMaking(value) {
-    radioValue = value;
+  void groupListMaking(value, availalble) {
     switch (value) {
       case 2:
         one;
@@ -147,24 +149,63 @@ class AddTournamentProvider with ChangeNotifier {
         five;
         break;
       case 6:
-        choice = "Football";
-        color = Colors.greenAccent;
+        log("six");
+        teams.shuffle();
+        one.clear();
+        one.addAll(teams.sublist(0, availalble));
+        log(one.toString());
+        two.addAll(teams.sublist(7, 12));
+        log(two.toString());
+//         two.addAll(teams.sublist(13, 12));
+//         three;
+// two.addAll(teams.sublist(7, 12));
+//         four;
+//         two.addAll(teams.sublist(7, 12));
+//         five;
+//         two.addAll(teams.sublist(7, 12));
+        six;
         break;
       case 7:
-        choice = "Football";
-        color = Colors.greenAccent;
+        one;
+        two;
+        three;
+        four;
+        five;
+        six;
+        seven;
         break;
       case 8:
-        choice = "Football";
-        color = Colors.greenAccent;
+        one;
+        two;
+        three;
+        four;
+        five;
+        six;
+        seven;
+        eight;
         break;
       case 9:
-        choice = "Football";
-        color = Colors.greenAccent;
+        one;
+        two;
+        three;
+        four;
+        five;
+        six;
+        seven;
+        eight;
+        nine;
         break;
       case 10:
-        choice = "Football";
-        color = Colors.greenAccent;
+        one;
+        two;
+        three;
+        four;
+        five;
+        six;
+        seven;
+        eight;
+        nine;
+        ten;
         break;
       default:
         choice = null;

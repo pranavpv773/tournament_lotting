@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view/widgets/terxtformwidget.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
 import 'package:tournament_lotter/app/app_style/app_style.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
-import 'package:tournament_lotter/app/groups/view/group_screen.dart';
-import 'package:tournament_lotter/app/routes/routes.dart';
 
 class AddTournamentScreen extends StatelessWidget {
   const AddTournamentScreen(
@@ -35,11 +32,12 @@ class AddTournamentScreen extends StatelessWidget {
                 physics: const ScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
-                    mainAxisExtent: 100,
-                    childAspectRatio: 3 / 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 0),
+                  maxCrossAxisExtent: 200,
+                  mainAxisExtent: 100,
+                  childAspectRatio: 3 / 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 0,
+                ),
                 itemCount: length,
                 itemBuilder: (BuildContext ctx, index) {
                   return TextformWidget(
@@ -108,14 +106,10 @@ class AddTournamentScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  context.read<AddTournamentProvider>().count != null
-                      ? RoutesProvider.nextScreen(
-                          screen: const GroupScreen(),
-                        )
-                      : Fluttertoast.showToast(
-                          msg: "Please select available group",
-                          toastLength: Toast.LENGTH_LONG,
-                        );
+                  context.read<AddTournamentProvider>().createTeams(
+                      context.read<AddTournamentProvider>().controllers.length,
+                      context,
+                      context.read<AddTournamentProvider>().count!.toInt());
                 },
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 50),
