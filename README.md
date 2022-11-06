@@ -1,16 +1,21 @@
 # tournament_lotter
 
-A new Flutter project.
+![WhatsApp Image 2022-11-05 at 00 56 05](https://user-images.githubusercontent.com/91565180/200166194-7d33ef4b-994a-4621-baaa-68ef372a9db5.jpeg)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# packages_used
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## provider
+## firebase_auth
+## firebase_core
+## cloud_firestore
+## top_snackbar_flutter
+## swipeable_page_route
+## lottie
+## pin_code_text_field
+## pin_code_fields
+## flutter_animated_dialog
+## fluttertoast
+## shared_preferences
+## google_fonts
+## cached_network_image
