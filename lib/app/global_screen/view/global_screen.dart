@@ -14,13 +14,30 @@ class GlobalScreen extends StatelessWidget {
           .watch<GlobalProvider>()
           .pages[context.read<GlobalProvider>().selectIndex],
       bottomNavigationBar: BottomNavigationBar(
+        elevation: 10,
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.add), label: "Select"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.sports_soccer_rounded), label: "Tournament"),
+            icon: Icon(
+              Icons.home,
+            ),
+            label: "Home",
+          ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline_sharp),
+            icon: Icon(
+              Icons.add,
+            ),
+            label: "Select",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.sports_soccer_rounded,
+            ),
+            label: "Tournament",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person_outline_sharp,
+            ),
             label: "Account",
           ),
         ],
