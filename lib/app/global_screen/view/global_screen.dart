@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:iconify_flutter/iconify_flutter.dart';
+import 'package:iconify_flutter/icons/ant_design.dart';
+import 'package:iconify_flutter/icons/bx.dart';
+import 'package:iconify_flutter/icons/codicon.dart';
+import 'package:iconify_flutter/icons/emojione_monotone.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
 import 'package:tournament_lotter/app/global_screen/view_model/global_provider.dart';
@@ -17,34 +22,30 @@ class GlobalScreen extends StatelessWidget {
         elevation: 10,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home,
+            icon: Iconify(
+              Bx.home_alt,
             ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.add,
-            ),
+            icon: Iconify(AntDesign.select_outlined),
             label: "Select",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.sports_soccer_rounded,
-            ),
+            icon: Iconify(EmojioneMonotone.soccer_ball),
             label: "Tournament",
           ),
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.person_outline_sharp,
-            ),
+            icon: Iconify(Codicon.account),
             label: "Account",
           ),
         ],
         currentIndex: context.watch<GlobalProvider>().selectIndex,
         backgroundColor: kPrimary,
         selectedItemColor: kOrange,
-        unselectedItemColor: kPrimary,
+        selectedIconTheme: IconThemeData(color: kOrange),
+        unselectedIconTheme: IconThemeData(color: kPrimary),
+        unselectedItemColor: Colors.black,
         showUnselectedLabels: true,
         onTap: (value) {
           context.read<GlobalProvider>().onIndexChange(value);
