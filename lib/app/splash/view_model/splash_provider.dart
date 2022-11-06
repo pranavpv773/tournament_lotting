@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tournament_lotter/app/global_screen/view/global_screen.dart';
 import 'package:tournament_lotter/app/home/view/home.dart';
 import 'package:tournament_lotter/app/login/view/login_screen.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
@@ -17,7 +18,7 @@ class SplashProvider with ChangeNotifier {
     );
     if (checkResult) {
       RoutesProvider.removeScreen(
-        screen: HomeScreen(),
+        screen: const GlobalScreen(),
       );
     } else {
       RoutesProvider.removeScreen(
