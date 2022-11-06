@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tournament_lotter/app/add_tournaments/view_model/add_provider.dart';
 import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/app/global_screen/view_model/global_provider.dart';
 import 'package:tournament_lotter/app/groups/view_model/group_provider.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
@@ -27,6 +28,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(
+          create: (create) => GlobalProvider(),
+        ),
         ChangeNotifierProvider(
           create: (create) => SplashProvider(),
         ),
