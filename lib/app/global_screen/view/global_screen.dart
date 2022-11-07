@@ -20,23 +20,41 @@ class GlobalScreen extends StatelessWidget {
           .pages[context.read<GlobalProvider>().selectIndex],
       bottomNavigationBar: BottomNavigationBar(
         elevation: 10,
-        items: const [
+        items: [
           BottomNavigationBarItem(
             icon: Iconify(
               Bx.home_alt,
+              color: context.watch<GlobalProvider>().selectIndex == 0
+                  ? kOrange
+                  : kPrimary,
             ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Iconify(AntDesign.select_outlined),
+            icon: Iconify(
+              AntDesign.select_outlined,
+              color: context.watch<GlobalProvider>().selectIndex == 1
+                  ? kOrange
+                  : kPrimary,
+            ),
             label: "Select",
           ),
           BottomNavigationBarItem(
-            icon: Iconify(EmojioneMonotone.soccer_ball),
+            icon: Iconify(
+              EmojioneMonotone.soccer_ball,
+              color: context.watch<GlobalProvider>().selectIndex == 2
+                  ? kOrange
+                  : kPrimary,
+            ),
             label: "Tournament",
           ),
           BottomNavigationBarItem(
-            icon: Iconify(Codicon.account),
+            icon: Iconify(
+              Codicon.account,
+              color: context.watch<GlobalProvider>().selectIndex == 3
+                  ? kOrange
+                  : kPrimary,
+            ),
             label: "Account",
           ),
         ],
@@ -45,7 +63,7 @@ class GlobalScreen extends StatelessWidget {
         selectedItemColor: kOrange,
         selectedIconTheme: IconThemeData(color: kOrange),
         unselectedIconTheme: IconThemeData(color: kPrimary),
-        unselectedItemColor: Colors.black,
+        unselectedItemColor: kPrimary,
         showUnselectedLabels: true,
         onTap: (value) {
           context.read<GlobalProvider>().onIndexChange(value);
