@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:tournament_lotter/app/constants/colors/colors.dart';
 
 class TurfSplashScreen extends StatelessWidget {
   const TurfSplashScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      backgroundColor: kPrimary,
+      body: Center(
+        child: Image.asset(
+          "assets/turf/turf_logo.png",
+        ),
+      ),
+    );
   }
 }
