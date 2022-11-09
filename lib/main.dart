@@ -8,9 +8,9 @@ import 'package:tournament_lotter/app/groups/view_model/group_provider.dart';
 import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'package:tournament_lotter/app/register/view_model/register_provider.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
-import 'package:tournament_lotter/app/splash/view/splash.dart';
 import 'package:tournament_lotter/app/splash/view_model/splash_provider.dart';
 import 'package:tournament_lotter/app/utility/view_model/snack_provider.dart';
+import 'package:tournament_lotter/turf_app/turf_splash/view/splash.dart';
 import 'package:tournament_lotter/turf_app/turf_splash/view_model/turf_splash_notifier.dart';
 
 import 'app/utility/view_model/auth_services.dart';
@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.red,
           scaffoldBackgroundColor: kWhite,
         ),
-        home: const SplashScreen(),
+        home: const TurfSplashScreen(),
       ),
     );
   }
