@@ -11,7 +11,6 @@ import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/splash/view_model/splash_provider.dart';
 import 'package:tournament_lotter/app/utility/view_model/snack_provider.dart';
 import 'package:tournament_lotter/turf_app/turf_splash/view/splash.dart';
-import 'package:tournament_lotter/turf_app/turf_splash/view_model/turf_splash_notifier.dart';
 
 import 'app/utility/view_model/auth_services.dart';
 
@@ -52,9 +51,6 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (create) => GroupProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (create) => TurfSplashNotifier(),
         ),
       ],
       child: MaterialApp(
