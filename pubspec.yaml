@@ -49,6 +49,7 @@ dependencies:
   google_fonts: ^3.0.1
   cached_network_image: ^3.2.1
   iconify_flutter: ^0.0.5
+  flutter_bloc: ^8.1.1
 
 
 dev_dependencies:
