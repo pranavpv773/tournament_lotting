@@ -1,7 +1,7 @@
 {
     "java.project.sourcePaths": [
         "lib/app/register/view",
-        "lib/app/groups/view_model"
+        "lib/turf_app/home"
     ],
     "java.configuration.updateBuildConfiguration": "automatic"
 }
