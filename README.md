@@ -19,3 +19,4 @@
 ## shared_preferences
 ## google_fonts
 ## cached_network_image
+## flutter_bloc
