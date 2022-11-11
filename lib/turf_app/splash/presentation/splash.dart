@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tournament_lotter/app/constants/colors/colors.dart';
+import 'package:tournament_lotter/turf_app/core/styles/colors/colors.dart';
 import 'package:tournament_lotter/turf_app/splash/presentation/widgets/body.dart';
 
 class TurfSplashScreen extends StatelessWidget {
@@ -8,7 +8,7 @@ class TurfSplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kPrimary,
+      backgroundColor: Turfcolors.kPrimary,
       body: const SplashBody(),
     );
   }
