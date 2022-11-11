@@ -6,7 +6,7 @@ import 'package:tournament_lotter/app/login/view_model/login_provider.dart';
 import 'package:tournament_lotter/app/routes/routes.dart';
 import 'package:tournament_lotter/app/settings/view/settings.dart';
 import 'package:tournament_lotter/app/tournaments/view/tournment.dart';
-import 'package:tournament_lotter/turf_app/turf_splash/view/splash.dart';
+import 'package:tournament_lotter/turf_app/splash/presentation/splash.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
